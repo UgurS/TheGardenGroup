@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using System.Collections.Generic;
 using Model;
 using MongoDB.Bson.Serialization;
+using System;
 
 namespace DAL
 {
@@ -12,7 +13,7 @@ namespace DAL
 
         public DAO()
         {
-            client = new MongoClient("mongodb+srv://user2:12345@cluster0.jfozv.mongodb.net/DemoChart?retryWrites=true&w=majority");
+            client = new MongoClient("mongodb+srv://thegardengroup:ATPwszhhodqQ8Upi@cluster0.w8hjrzc.mongodb.net/");
         }
 
         public List<Databases_Model> GetDatabases()
@@ -24,6 +25,15 @@ namespace DAL
                 all_databases.Add(BsonSerializer.Deserialize<Databases_Model>(db));
             }
             return all_databases;
+        }
+
+        public BsonDocument FindOneDocument(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var database = client.GetDatabase("thegardengroup");
+            var collection = database.GetCollection<BsonDocument>(collectionName);
+            var firstDocument = collection.Find(filter).FirstOrDefault();
+
+            return firstDocument;
         }
     }
 
