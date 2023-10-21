@@ -5,6 +5,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -25,11 +26,11 @@ namespace Logic
         }
         public EmployeeModel Login(string username, string password)
         {
-            DAO dao = new DAO();
+            EmployeeDao dao = new EmployeeDao();
+
             string hashedPassword = HashPassword(password);
-            var filter = Builders<BsonDocument>.Filter.Eq("username", username) & Builders<BsonDocument>.Filter.Eq("password", hashedPassword);
-            var result = dao.FindOneDocument("employees", filter);
-            return BsonSerializer.Deserialize<EmployeeModel>(result);
+
+            return dao.GetEmployeeByAuth(username, hashedPassword);
         }
     }
 }

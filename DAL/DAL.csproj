@@ -110,7 +110,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO.cs" />
+    <Compile Include="BaseDao.cs" />
+    <Compile Include="EmployeeDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

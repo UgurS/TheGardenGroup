@@ -29,11 +29,28 @@ namespace DemoApp
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            LoginLogic loginLogic = new LoginLogic();
-            Console.WriteLine(loginLogic.HashPassword(tbPassword.Text));
+            try
+            {
+                LoginLogic loginLogic = new LoginLogic();
+                EmployeeModel employee = loginLogic.Login(tbUsername.Text, tbPassword.Text);
 
-            EmployeeModel employee = loginLogic.Login(tbUsername.Text, tbPassword.Text);
-           /* Console.WriteLine(employee.email);*/
+                if (employee.Role == EmployeeRole.Regular)
+                {
+                    RegularDashboard regularDashboard = new RegularDashboard(employee);
+                    regularDashboard.Show();
+                }
+                else if (employee.Role == EmployeeRole.ServiceDesk)
+                {
+                    ServiceDeskDashboard serviceDeskDashboard = new ServiceDeskDashboard(employee);
+                    serviceDeskDashboard.Show();
+                }
+
+                this.Hide();
+
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "The Garden Group");
+            }       
         }
     }
 }

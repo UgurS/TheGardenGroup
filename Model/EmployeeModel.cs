@@ -11,24 +11,24 @@ namespace Model
     public class EmployeeModel
     {
         [BsonElement("_id")]
-        public ObjectId id { get; set; }
+        public ObjectId Id { get; set; }
 
         [BsonElement("username")]
-        public string username { get; set; }
+        public string Username { get; set; }
 
         [BsonElement("password")]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [BsonElement("firstName")]
-        public string firstName { get; set; }
+        public string FirstName { get; set; }
 
         [BsonElement("lastName")]
-        public string lastName { get; set; }
+        public string LastName { get; set; }
 
         [BsonElement("email")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [BsonElement("role")]
-        public string role { get; set; }
+        public EmployeeRole Role { get; set; }
     }
 }
