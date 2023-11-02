@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum EmployeeRole
+    public enum TicketStatus
     {
-        Regular,
-        ServiceDesk
+        Open,
+        Resolved,
+        ClosedWithoutResolve
     }
 }

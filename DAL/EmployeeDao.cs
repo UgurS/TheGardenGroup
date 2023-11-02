@@ -29,5 +29,18 @@ namespace DAL
                 throw new Exception("Invalid username or password");
             }
         }
+
+        public List<EmployeeModel> GetAllEmployees()
+        {
+            try
+            {
+                var result = _baseDao.Read("employees", new BsonDocument());
+                return result.Select(document => BsonSerializer.Deserialize<EmployeeModel>(document)).ToList();
+            }
+            catch
+            {
+                throw new Exception("Couldn't get employees.");
+            }
+        }
     }
 }
