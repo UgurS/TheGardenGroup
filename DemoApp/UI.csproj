@@ -117,6 +117,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateNewIncident.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewIncident.Designer.cs">
+      <DependentUpon>CreateNewIncident.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     <Compile Include="ServiceDeskDashboard.Designer.cs">
       <DependentUpon>ServiceDeskDashboard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CreateNewIncident.resx">
+      <DependentUpon>CreateNewIncident.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

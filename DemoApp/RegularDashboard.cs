@@ -24,5 +24,11 @@ namespace DemoApp
         {
 
         }
+
+        private void btnNewIncident_Click(object sender, EventArgs e)
+        {
+            CreateNewIncident createNewIncident = new CreateNewIncident(employee);
+            createNewIncident.Show();
+        }
     }
 }
