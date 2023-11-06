@@ -30,5 +30,11 @@ namespace Model
 
         [BsonElement("role")]
         public EmployeeRole Role { get; set; }
+
+        [BsonElement ("location")]
+        public string Location { get; set; }
+
+        [BsonElement("phoneNumber")]
+        public int Phone { get; set; }
     }
 }
