@@ -110,7 +110,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Databases.cs" />
+    <Compile Include="CreateTicketLogic.cs" />
     <Compile Include="LoginLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

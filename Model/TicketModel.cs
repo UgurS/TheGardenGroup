@@ -1,5 +1,5 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class EmployeeModel
+    public class TicketModel
     {
         [BsonElement("_id")]
         public ObjectId Id { get; set; }
 
-        [BsonElement("username")]
-        public string Username { get; set; }
+        [BsonElement("subject")]
+        public string Subject { get; set; }
 
-        [BsonElement("password")]
-        public string Password { get; set; }
+        [BsonElement("incidentType")]
+        public string IncidentType { get; set; }
 
         [BsonElement("firstName")]
         public string FirstName { get; set; }
