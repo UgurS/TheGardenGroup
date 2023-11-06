@@ -22,10 +22,7 @@ namespace DemoApp
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -33,7 +30,16 @@ namespace DemoApp
             Console.WriteLine(loginLogic.HashPassword(tbPassword.Text));
 
             EmployeeModel employee = loginLogic.Login(tbUsername.Text, tbPassword.Text);
+            OpenNewView();
            /* Console.WriteLine(employee.email);*/
+        }
+        private void OpenNewView()
+        {
+            this.Hide();
+            Form home = new Form();
+            home = new IncidentManagementView();
+            home.Closed += (s, args) => this.Close();
+            home.Show();
         }
     }
 }

@@ -9,8 +9,8 @@ namespace DAL
 {
     public class DAO
     {
-        private MongoClient client;
-
+        protected MongoClient client;
+        protected IMongoDatabase database;
         public DAO()
         {
             client = new MongoClient("mongodb+srv://thegardengroup:ATPwszhhodqQ8Upi@cluster0.w8hjrzc.mongodb.net/");
@@ -29,7 +29,7 @@ namespace DAL
 
         public BsonDocument FindOneDocument(string collectionName, FilterDefinition<BsonDocument> filter)
         {
-            var database = client.GetDatabase("thegardengroup");
+            database = client.GetDatabase("thegardengroup");
             var collection = database.GetCollection<BsonDocument>(collectionName);
             var firstDocument = collection.Find(filter).FirstOrDefault();
 
