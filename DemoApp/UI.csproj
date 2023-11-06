@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -131,11 +131,6 @@
     </Compile>
     <Compile Include="CreateNewUser.Designer.cs">
       <DependentUpon>CreateNewUser.cs</DependentUpon>
-    <Compile Include="IncidentManagementView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IncidentManagementView.designer.cs">
-      <DependentUpon>IncidentManagementView.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -162,8 +157,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateNewUser.resx">
       <DependentUpon>CreateNewUser.cs</DependentUpon>
-    <EmbeddedResource Include="IncidentManagementView.resx">
-      <DependentUpon>IncidentManagementView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

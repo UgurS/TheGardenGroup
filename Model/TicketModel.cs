@@ -16,13 +16,8 @@ namespace Model
         [BsonElement("subject")]
         public string Subject { get; set; }
 
-        [BsonElement ("openDate")]
-        public DateTime dateTime { get; set; }
-
         [BsonElement("incidentType")]
         public string IncidentType { get; set; }
-        [BsonElement("reportedBy")]
-        public EmployeeModel User { get; set; }
 
         [BsonElement("firstName")]
         public string FirstName { get; set; }
@@ -35,17 +30,5 @@ namespace Model
 
         [BsonElement("role")]
         public EmployeeRole Role { get; set; }
-
-        [BsonElement("priority")]
-        public string Priority { get; set; }
-
-        [BsonElement("deadline")]
-        public DateTime Deadline { get; set; }
-
-        [BsonElement("description")]
-        public string Description { get; set; }
-
-        [BsonElement("status")]
-        public TicketStatus Status { get; set; }
     }
 }

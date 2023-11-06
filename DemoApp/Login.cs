@@ -41,8 +41,8 @@ namespace DemoApp
                 }
                 else if (employee.Role == EmployeeRole.ServiceDesk)
                 {
-                    IncidentManagementView incidentManagementView = new IncidentManagementView(employee);
-                    incidentManagementView.Show();
+                    ServiceDeskDashboard serviceDeskDashboard = new ServiceDeskDashboard(employee);
+                    serviceDeskDashboard.Show();
                 }
 
                 this.Hide();
