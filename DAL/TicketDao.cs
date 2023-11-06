@@ -32,5 +32,16 @@ namespace DAL
         {
             return collection1.Find(_ => true).ToList();
         }
+        public void UpdateTicket(string collectionName, FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> update)
+        {
+            try
+            {
+                _baseDao.Update(collectionName, filter, update);
+            }
+            catch
+            {
+                throw new Exception("Invalid Input");
+            }
+        }
     }
 }

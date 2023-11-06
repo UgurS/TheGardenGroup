@@ -35,7 +35,7 @@ namespace DAL
             return result;
         }
 
-        public void Update(string collectionName, BsonDocument filter, BsonDocument document)
+        public void Update(string collectionName, FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> document)
         {
             var collection = _database.GetCollection<BsonDocument>(collectionName);
             collection.UpdateOne(filter, document);
