@@ -21,7 +21,7 @@ namespace Logic
                     { "incidentType", type },
                     { "reportedBy", 
                         new BsonDocument {
-                            { "_id", reportedBy.Id },
+                            { "id", reportedBy.Id },
                             { "username", reportedBy.Username }
                         } 
                     },

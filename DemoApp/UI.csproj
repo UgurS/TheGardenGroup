@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+    </Reference>
     <Reference Include="DnsClient, Version=1.4.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
       <HintPath>..\packages\DnsClient.1.4.0\lib\net471\DnsClient.dll</HintPath>
     </Reference>
@@ -123,11 +126,11 @@
     <Compile Include="CreateNewIncident.Designer.cs">
       <DependentUpon>CreateNewIncident.cs</DependentUpon>
     </Compile>
-    <Compile Include="IncidentManagementView.cs">
+    <Compile Include="CreateNewUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IncidentManagementView.designer.cs">
-      <DependentUpon>IncidentManagementView.cs</DependentUpon>
+    <Compile Include="CreateNewUser.Designer.cs">
+      <DependentUpon>CreateNewUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -152,8 +155,8 @@
     <EmbeddedResource Include="CreateNewIncident.resx">
       <DependentUpon>CreateNewIncident.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IncidentManagementView.resx">
-      <DependentUpon>IncidentManagementView.cs</DependentUpon>
+    <EmbeddedResource Include="CreateNewUser.resx">
+      <DependentUpon>CreateNewUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
