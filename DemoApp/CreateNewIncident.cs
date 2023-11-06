@@ -15,20 +15,35 @@ namespace DemoApp
     public partial class CreateNewIncident : Form
     {
         EmployeeModel employee;
+        private EmployeeLogic employeeLogic;
         public CreateNewIncident(EmployeeModel employee)
         {
             InitializeComponent();
             this.employee = employee;
+            employeeLogic = new EmployeeLogic();
 
             dateTimeReported.MaxDate = DateTime.Now;
             dateTimeReported.CustomFormat = "dd/MM/yyyy - HH:mm";
 
             cbUser.Items.Clear();
-
+            
             if (employee.Role == EmployeeRole.Regular) {
                 cbUser.Items.Add(employee.Username);
                 cbUser.SelectedIndex = 0;
                 cbUser.Enabled = false; 
+            }
+            else if (employee.Role == EmployeeRole.ServiceDesk)
+            {
+                cbUser.Items.Add("Select Employee");
+                List<EmployeeModel> employees = employeeLogic.GetAllEmployees();
+                //List<string> usernames = employees.Select(emp=>emp.Username).ToList();
+
+                foreach (var emp in employees)
+                {
+                    cbUser.Items.Add(emp.Username);
+                }
+                cbUser.SelectedIndex = 0;
+                cbUser.Enabled = true;
             }
         }
 
