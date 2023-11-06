@@ -1,12 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Model;
+using DAL;
+using System;
 
 namespace Logic
 {
-    internal class AddEmployeeLogic
+    public class AddEmployeeLogic
     {
+        private EmployeeDao employeeDao;
+
+        public AddEmployeeLogic()
+        {
+            employeeDao = new EmployeeDao();
+        }
+            
+        public void AddEmployee(EmployeeModel employee)
+        {
+            try
+            {
+                employeeDao.AddEmployee(employee);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to add employee: " + ex.Message);
+            }
+        }
     }
 }

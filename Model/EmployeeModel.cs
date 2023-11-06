@@ -10,6 +10,7 @@ namespace Model
 {
     public class EmployeeModel
     {
+
         [BsonElement("_id")]
         public ObjectId Id { get; set; }
 
@@ -30,5 +31,12 @@ namespace Model
 
         [BsonElement("role")]
         public EmployeeRole Role { get; set; }
+
+        [BsonElement("location")]
+        public string Location { get; set; }
+
+        [BsonElement("phoneNumber")]
+        public string PhoneNumber { get; set; }
     }
+
 }

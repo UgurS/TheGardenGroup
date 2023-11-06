@@ -14,15 +14,16 @@ namespace DemoApp
     public partial class ServiceDeskDashboard : Form
     {
         EmployeeModel employee;
+        CreateNewUser createNewUser = new CreateNewUser();
         public ServiceDeskDashboard(EmployeeModel employee)
         {
             InitializeComponent();
             this.employee = employee;
         }
 
-        private void ServiceDeskDashboard_Load(object sender, EventArgs e)
+        private void buttonAddUser_Click(object sender, EventArgs e)
         {
-
+            createNewUser.Show();
         }
     }
 }
