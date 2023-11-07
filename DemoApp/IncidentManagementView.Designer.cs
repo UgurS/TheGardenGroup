@@ -32,17 +32,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listViewTickets = new System.Windows.Forms.ListView();
-            this.createTicketButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.incidentManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Subject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.User = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.createTicketButton = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.incidentManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBoxSubject = new System.Windows.Forms.TextBox();
+            this.textBoxUser = new System.Windows.Forms.TextBox();
+            this.textBoxStatus = new System.Windows.Forms.TextBox();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +90,7 @@
             this.User,
             this.Date,
             this.Status});
+            this.listViewTickets.FullRowSelect = true;
             this.listViewTickets.HideSelection = false;
             this.listViewTickets.Location = new System.Drawing.Point(12, 292);
             this.listViewTickets.Name = "listViewTickets";
@@ -90,6 +98,26 @@
             this.listViewTickets.TabIndex = 2;
             this.listViewTickets.UseCompatibleStateImageBehavior = false;
             this.listViewTickets.View = System.Windows.Forms.View.Details;
+            // 
+            // Subject
+            // 
+            this.Subject.Text = "Subject";
+            this.Subject.Width = 180;
+            // 
+            // User
+            // 
+            this.User.Text = "User";
+            this.User.Width = 138;
+            // 
+            // Date
+            // 
+            this.Date.Text = "Date";
+            this.Date.Width = 180;
+            // 
+            // Status
+            // 
+            this.Status.Text = "Status";
+            this.Status.Width = 166;
             // 
             // createTicketButton
             // 
@@ -101,27 +129,29 @@
             this.createTicketButton.UseVisualStyleBackColor = true;
             this.createTicketButton.Click += new System.EventHandler(this.createTicketButton_Click);
             // 
-            // button2
+            // buttonDelete
             // 
-            this.button2.Location = new System.Drawing.Point(1208, 451);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(179, 58);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonDelete.Location = new System.Drawing.Point(1208, 451);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(179, 58);
+            this.buttonDelete.TabIndex = 4;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonUpdate
             // 
-            this.button3.Location = new System.Drawing.Point(1208, 612);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(179, 58);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Location = new System.Drawing.Point(1208, 612);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(179, 58);
+            this.buttonUpdate.TabIndex = 5;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
@@ -130,58 +160,103 @@
             this.toolStripMenuItem1,
             this.incidentManagementToolStripMenuItem,
             this.userManagementToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(2, 170);
+            this.menuStrip1.Location = new System.Drawing.Point(2, 162);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1397, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(1397, 52);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 38);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 48);
             this.toolStripMenuItem1.Text = "Dashboard";
             // 
             // incidentManagementToolStripMenuItem
             // 
             this.incidentManagementToolStripMenuItem.Name = "incidentManagementToolStripMenuItem";
-            this.incidentManagementToolStripMenuItem.Size = new System.Drawing.Size(270, 38);
+            this.incidentManagementToolStripMenuItem.Size = new System.Drawing.Size(270, 48);
             this.incidentManagementToolStripMenuItem.Text = "Incident Management";
             // 
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(231, 38);
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(231, 48);
             this.userManagementToolStripMenuItem.Text = "User Management";
             // 
-            // Subject
+            // textBoxSubject
             // 
-            this.Subject.Text = "Subject";
-            this.Subject.Width = 180;
+            this.textBoxSubject.Location = new System.Drawing.Point(12, 910);
+            this.textBoxSubject.Name = "textBoxSubject";
+            this.textBoxSubject.Size = new System.Drawing.Size(248, 31);
+            this.textBoxSubject.TabIndex = 7;
             // 
-            // User
+            // textBoxUser
             // 
-            this.User.Text = "User";
-            this.User.Width = 100;
+            this.textBoxUser.Location = new System.Drawing.Point(349, 910);
+            this.textBoxUser.Name = "textBoxUser";
+            this.textBoxUser.Size = new System.Drawing.Size(248, 31);
+            this.textBoxUser.TabIndex = 8;
             // 
-            // Date
+            // textBoxStatus
             // 
-            this.Date.Text = "Date";
-            this.Date.Width = 100;
+            this.textBoxStatus.Location = new System.Drawing.Point(706, 910);
+            this.textBoxStatus.Name = "textBoxStatus";
+            this.textBoxStatus.Size = new System.Drawing.Size(248, 31);
+            this.textBoxStatus.TabIndex = 9;
             // 
-            // Status
+            // dateTimePicker
             // 
-            this.Status.Text = "Status";
-            this.Status.Width = 100;
+            this.dateTimePicker.Location = new System.Drawing.Point(12, 980);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(416, 31);
+            this.dateTimePicker.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 871);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 31);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Subject";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(343, 871);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 31);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "User";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(700, 871);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 31);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Status";
             // 
             // IncidentManagementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1399, 873);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(1399, 1041);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(this.textBoxStatus);
+            this.Controls.Add(this.textBoxUser);
+            this.Controls.Add(this.textBoxSubject);
+            this.Controls.Add(this.buttonUpdate);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.createTicketButton);
             this.Controls.Add(this.listViewTickets);
             this.Controls.Add(this.panel1);
@@ -197,6 +272,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -207,8 +283,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listViewTickets;
         private System.Windows.Forms.Button createTicketButton;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem incidentManagementToolStripMenuItem;
@@ -217,5 +293,12 @@
         private System.Windows.Forms.ColumnHeader User;
         private System.Windows.Forms.ColumnHeader Date;
         private System.Windows.Forms.ColumnHeader Status;
+        private System.Windows.Forms.TextBox textBoxSubject;
+        private System.Windows.Forms.TextBox textBoxUser;
+        private System.Windows.Forms.TextBox textBoxStatus;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
