@@ -112,6 +112,8 @@
   <ItemGroup>
     <Compile Include="EmployeeModel.cs" />
     <Compile Include="EmployeeRole.cs" />
+    <Compile Include="Priority.cs" />
+    <Compile Include="PriorityOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TicketModel.cs" />
     <Compile Include="TicketStatus.cs" />

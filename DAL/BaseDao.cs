@@ -40,5 +40,11 @@ namespace DAL
             var collection = _database.GetCollection<BsonDocument>(collectionName);
             collection.UpdateOne(filter, document);
         }
+
+        public void Delete(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = _database.GetCollection<BsonDocument>(collectionName);
+            collection.DeleteOne(filter);
+        }
     }
 }

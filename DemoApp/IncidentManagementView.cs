@@ -20,21 +20,26 @@ namespace DemoApp
         Form form = new Form();
         EmployeeModel employee;
         TicketsLogic ticketsLogic;
+        List<TicketModel> tickets;
         public IncidentManagementView(EmployeeModel employee)
         {
             InitializeComponent();
             this.employee = employee;
             ticketsLogic = new TicketsLogic();
+            tickets = new List<TicketModel>();
         }
 
         private void createTicketButton_Click(object sender, EventArgs e)
         {
           form = new CreateNewIncident(employee);
           form.Show();
+            ShowTickets();
         }
 
         private void IncidentManagementView_Load(object sender, EventArgs e)
         {
+            radioButtonHightoLow.CheckedChanged += (s, ev) => SortTicketsByPriority(Model.PriorityOrder.HighMediumLow);
+            radioButtonLowToHigh.CheckedChanged += (s, ev) => SortTicketsByPriority(Model.PriorityOrder.LowMediumHigh);
             ShowTickets();
         }
         private List <TicketModel> GetTickets(List<TicketModel> tickets)
@@ -45,6 +50,7 @@ namespace DemoApp
                 listViewItem.SubItems.Add(ticket.User.Username);
                 listViewItem.SubItems.Add(ticket.dateTime.ToString("yyyy-MM-dd HH:mm:ss"));
                 listViewItem.SubItems.Add(ticket.Status.ToString());
+                listViewItem.SubItems.Add(ticket.Priority.ToString());
                 listViewItem.Tag = ticket.Id;
                 listViewTickets.Items.Add(listViewItem);
             }
@@ -67,17 +73,22 @@ namespace DemoApp
                     {
                         ticketsLogic.EditTicket(selectedTicketId, updatedSubject, updatedUser, updatedDate, status);
 
+                        MessageBox.Show("Ticket updated successfully");
                         ShowTickets();
                         ClearTextBoxes();
                     }
                 }
+                else
+                {
+                    MessageBox.Show("No item selected");
+                }
             }
             catch
             {
-                throw new Exception("No item Selected");
+                throw new Exception("Editing Tickets Failed");
             }
         }
-        private void ShowTickets()
+        public void ShowTickets()
         {
             listViewTickets.Items.Clear();
             List<TicketModel> tickets = ticketsLogic.GetAllTickets();
@@ -89,5 +100,54 @@ namespace DemoApp
             textBoxUser.Clear();
             textBoxStatus.Clear();
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listViewTickets.SelectedItems.Count > 0)
+                {
+                    foreach(ListViewItem listViewItem in listViewTickets.SelectedItems)
+                    {
+                        string selectedTicketId = listViewItem.Tag.ToString();
+                        ticketsLogic.DeleteTicket(selectedTicketId);
+                    }
+                    MessageBox.Show("Ticket Deleted Successfully");
+                    ShowTickets();
+                }
+            }
+            catch
+            {
+                new Exception("Deleting ticket failed");
+            }
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            ShowTickets();
+        }
+        private void SortTicketsByPriority(PriorityOrder priorityOrder)
+        {
+            List<ListViewItem> listViewItems = new List<ListViewItem>();
+
+            foreach (ListViewItem item in listViewTickets.Items)
+            {
+                listViewItems.Add(item);
+            }
+
+            if (priorityOrder == PriorityOrder.HighMediumLow)
+            {
+                listViewItems = listViewItems.OrderBy(item => (Priority)Enum.Parse(typeof(Priority), item.SubItems[4].Text)).ToList();
+            }
+            else
+            {
+                listViewItems = listViewItems.OrderByDescending(item => (Priority)Enum.Parse(typeof(Priority), item.SubItems[4].Text)).ToList();
+            }
+
+            listViewTickets.Items.Clear();
+
+            listViewTickets.Items.AddRange(listViewItems.ToArray());
+        }
+        
     }
 }

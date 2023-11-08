@@ -37,5 +37,9 @@ namespace Logic
                 ticketDao.UpdateTicket("tickets", filter, update);
             }
         }
+        public void DeleteTicket(string ticketId)
+        {
+            ticketDao.DeleteTicket(ticketId);
+        }
     }
 }

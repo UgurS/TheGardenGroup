@@ -36,6 +36,7 @@
             this.User = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Priority = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.createTicketButton = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
@@ -50,6 +51,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.radioButtonHightoLow = new System.Windows.Forms.RadioButton();
+            this.radioButtonLowToHigh = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -89,12 +94,13 @@
             this.Subject,
             this.User,
             this.Date,
-            this.Status});
+            this.Status,
+            this.Priority});
             this.listViewTickets.FullRowSelect = true;
             this.listViewTickets.HideSelection = false;
             this.listViewTickets.Location = new System.Drawing.Point(12, 292);
             this.listViewTickets.Name = "listViewTickets";
-            this.listViewTickets.Size = new System.Drawing.Size(1152, 550);
+            this.listViewTickets.Size = new System.Drawing.Size(1152, 565);
             this.listViewTickets.TabIndex = 2;
             this.listViewTickets.UseCompatibleStateImageBehavior = false;
             this.listViewTickets.View = System.Windows.Forms.View.Details;
@@ -102,26 +108,31 @@
             // Subject
             // 
             this.Subject.Text = "Subject";
-            this.Subject.Width = 180;
+            this.Subject.Width = 157;
             // 
             // User
             // 
             this.User.Text = "User";
-            this.User.Width = 138;
+            this.User.Width = 101;
             // 
             // Date
             // 
             this.Date.Text = "Date";
-            this.Date.Width = 180;
+            this.Date.Width = 153;
             // 
             // Status
             // 
             this.Status.Text = "Status";
-            this.Status.Width = 166;
+            this.Status.Width = 111;
+            // 
+            // Priority
+            // 
+            this.Priority.Text = "Priority";
+            this.Priority.Width = 90;
             // 
             // createTicketButton
             // 
-            this.createTicketButton.Location = new System.Drawing.Point(1208, 292);
+            this.createTicketButton.Location = new System.Drawing.Point(1188, 443);
             this.createTicketButton.Name = "createTicketButton";
             this.createTicketButton.Size = new System.Drawing.Size(179, 58);
             this.createTicketButton.TabIndex = 3;
@@ -131,16 +142,17 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(1208, 451);
+            this.buttonDelete.Location = new System.Drawing.Point(1188, 564);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(179, 58);
             this.buttonDelete.TabIndex = 4;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(1208, 612);
+            this.buttonUpdate.Location = new System.Drawing.Point(1188, 682);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(179, 58);
             this.buttonUpdate.TabIndex = 5;
@@ -242,12 +254,62 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Status";
             // 
+            // refreshButton
+            // 
+            this.refreshButton.Location = new System.Drawing.Point(1186, 799);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(179, 58);
+            this.refreshButton.TabIndex = 14;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
+            // radioButtonHightoLow
+            // 
+            this.radioButtonHightoLow.AutoSize = true;
+            this.radioButtonHightoLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonHightoLow.Location = new System.Drawing.Point(1185, 292);
+            this.radioButtonHightoLow.Name = "radioButtonHightoLow";
+            this.radioButtonHightoLow.Size = new System.Drawing.Size(182, 33);
+            this.radioButtonHightoLow.TabIndex = 15;
+            this.radioButtonHightoLow.TabStop = true;
+            this.radioButtonHightoLow.Text = "High to Low";
+            this.radioButtonHightoLow.UseVisualStyleBackColor = true;
+            this.radioButtonHightoLow.CheckedChanged += new System.EventHandler(this.IncidentManagementView_Load);
+            // 
+            // radioButtonLowToHigh
+            // 
+            this.radioButtonLowToHigh.AutoSize = true;
+            this.radioButtonLowToHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonLowToHigh.Location = new System.Drawing.Point(1185, 350);
+            this.radioButtonLowToHigh.Name = "radioButtonLowToHigh";
+            this.radioButtonLowToHigh.Size = new System.Drawing.Size(182, 33);
+            this.radioButtonLowToHigh.TabIndex = 16;
+            this.radioButtonLowToHigh.TabStop = true;
+            this.radioButtonLowToHigh.Text = "Low to High";
+            this.radioButtonLowToHigh.UseVisualStyleBackColor = true;
+            this.radioButtonLowToHigh.CheckedChanged += new System.EventHandler(this.IncidentManagementView_Load);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(1100, 240);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(287, 31);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Sort Tickets by Priority";
+            // 
             // IncidentManagementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1399, 1041);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.radioButtonLowToHigh);
+            this.Controls.Add(this.radioButtonHightoLow);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -300,5 +362,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.ColumnHeader Priority;
+        private System.Windows.Forms.RadioButton radioButtonHightoLow;
+        private System.Windows.Forms.RadioButton radioButtonLowToHigh;
+        private System.Windows.Forms.Label label6;
     }
 }

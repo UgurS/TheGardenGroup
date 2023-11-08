@@ -37,7 +37,7 @@ namespace Model
         public EmployeeRole Role { get; set; }
 
         [BsonElement("priority")]
-        public string Priority { get; set; }
+        public Priority Priority { get; set; }
 
         [BsonElement("deadline")]
         public DateTime Deadline { get; set; }

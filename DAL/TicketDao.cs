@@ -43,5 +43,19 @@ namespace DAL
                 throw new Exception("Invalid Input");
             }
         }
+        public void DeleteTicket(string ticketId)
+        {
+            try
+            {
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(ticketId));
+                var collectionName = "tickets";
+                _baseDao.Delete(collectionName, filter);
+            }
+            catch
+            {
+                throw new Exception("An error occured while deleting the ticket from database.");
+            }
+        }
+
     }
 }
