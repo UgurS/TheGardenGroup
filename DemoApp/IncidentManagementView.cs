@@ -31,8 +31,8 @@ namespace DemoApp
 
         private void createTicketButton_Click(object sender, EventArgs e)
         {
-          form = new CreateNewIncident(employee);
-          form.Show();
+            form = new CreateNewIncident(employee);
+            form.Show();
             ShowTickets();
         }
 
@@ -42,7 +42,7 @@ namespace DemoApp
             radioButtonLowToHigh.CheckedChanged += (s, ev) => SortTicketsByPriority(Model.PriorityOrder.LowMediumHigh);
             ShowTickets();
         }
-        private List <TicketModel> GetTickets(List<TicketModel> tickets)
+        private List<TicketModel> GetTickets(List<TicketModel> tickets)
         {
             foreach (TicketModel ticket in tickets)
             {
@@ -107,7 +107,7 @@ namespace DemoApp
             {
                 if (listViewTickets.SelectedItems.Count > 0)
                 {
-                    foreach(ListViewItem listViewItem in listViewTickets.SelectedItems)
+                    foreach (ListViewItem listViewItem in listViewTickets.SelectedItems)
                     {
                         string selectedTicketId = listViewItem.Tag.ToString();
                         ticketsLogic.DeleteTicket(selectedTicketId);
@@ -149,6 +149,49 @@ namespace DemoApp
             listViewTickets.Items.AddRange(listViewItems.ToArray());
         }
 
+        private void buttonResolve_Click(object sender, EventArgs e)
+        {
+            UpdateTicketStatus(TicketStatus.Resolved);
+
+        }
+        private void buttonCloseWithoutResolve_Click(object sender, EventArgs e)
+        {
+            UpdateTicketStatus(TicketStatus.ClosedWithoutResolve);
+
+        }
+        private void EnableButtonsBasedOnStatus(TicketStatus status)
+        {
+            buttonResolve.Enabled = (status == TicketStatus.Open);
+            buttonCloseWithoutResolve.Enabled = (status == TicketStatus.Open);
+        }
+
+        private void UpdateTicketStatus(TicketStatus newStatus)
+        {
+            if (listViewTickets.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedTicket = listViewTickets.SelectedItems[0];
+                string selectedTicketId = selectedTicket.Tag.ToString();
+
+                selectedTicket.SubItems[3].Text = newStatus.ToString(); 
+
+                ticketsLogic.EditTicket(selectedTicketId, selectedTicket.SubItems[0].Text, employee, DateTime.Parse(selectedTicket.SubItems[2].Text), newStatus);
+
+                MessageBox.Show($"Ticket status updated to {newStatus}", "Status Change");
+                EnableButtonsBasedOnStatus(newStatus);
+            }
+        }
+        private void listViewTickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewTickets.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedTicket = listViewTickets.SelectedItems[0];
+                TicketStatus status = (TicketStatus)Enum.Parse(typeof(TicketStatus), selectedTicket.SubItems[3].Text); // Assuming status is in the fourth column
+
+                EnableButtonsBasedOnStatus(status);
+            }
+        }
+
+        // still work on this
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
