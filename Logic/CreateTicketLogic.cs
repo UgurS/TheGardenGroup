@@ -11,9 +11,9 @@ namespace Logic
 {
     public class CreateTicketLogic
     {
-        public void Submit(DateTime dateTime, string subject, string type, EmployeeModel reportedBy, string priority, int deadlineIndex, string description)
+        public void Submit(DateTime dateTime, string subject, string type, EmployeeModel reportedBy, Priority priority, int deadlineIndex, string description)
         {
-            if (dateTime != null && !String.IsNullOrEmpty(subject) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(priority) && !String.IsNullOrEmpty(description))
+            if (dateTime != null && !String.IsNullOrEmpty(subject) && !String.IsNullOrEmpty(type) && priority!=null && !String.IsNullOrEmpty(description))
             {
                 var document = new BsonDocument
                 {
@@ -21,11 +21,11 @@ namespace Logic
                     { "incidentType", type },
                     { "reportedBy", 
                         new BsonDocument {
-                            { "id", reportedBy.Id },
+                            { "_id", reportedBy.Id },
                             { "username", reportedBy.Username }
                         } 
                     },
-                    { "priority", priority },
+                    { "priority", priority.ToString() },
                     { "deadline", GetDeadline(deadlineIndex) },
                     { "description", description },
                     { "openDate", DateTime.Now },
