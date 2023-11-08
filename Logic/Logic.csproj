@@ -110,6 +110,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEmployeeLogic.cs" />
     <Compile Include="CreateTicketLogic.cs" />
     <Compile Include="EmployeeLogic.cs" />
     <Compile Include="LoginLogic.cs" />

@@ -148,6 +148,12 @@ namespace DemoApp
 
             listViewTickets.Items.AddRange(listViewItems.ToArray());
         }
-        
+
+        private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            CreateNewUser createNewUser = new CreateNewUser();
+            createNewUser.Show();
+        }
     }
 }

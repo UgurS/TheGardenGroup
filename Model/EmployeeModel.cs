@@ -35,6 +35,6 @@ namespace Model
         public string Location { get; set; }
 
         [BsonElement("phoneNumber")]
-        public int Phone { get; set; }
+        public string Phone { get; set; }
     }
 }

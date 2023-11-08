@@ -42,5 +42,16 @@ namespace DAL
                 throw new Exception("Couldn't get employees.");
             }
         }
+        public void AddEmployee(EmployeeModel employee)
+        {
+            try
+            {
+                _baseDao.Insert("employees", employee.ToBsonDocument());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to add employee: " + ex.Message);
+            }
+        }
     }
 }

@@ -123,6 +123,12 @@
     <Compile Include="CreateNewIncident.Designer.cs">
       <DependentUpon>CreateNewIncident.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewUser.Designer.cs">
+      <DependentUpon>CreateNewUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="IncidentManagementView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     </Compile>
     <EmbeddedResource Include="CreateNewIncident.resx">
       <DependentUpon>CreateNewIncident.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewUser.resx">
+      <DependentUpon>CreateNewUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IncidentManagementView.resx">
       <DependentUpon>IncidentManagementView.cs</DependentUpon>
