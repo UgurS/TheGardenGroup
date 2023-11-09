@@ -54,36 +54,43 @@ namespace DemoApp
             try
             {
                 CreateTicketLogic createTicket = new CreateTicketLogic();
-                if (employee.Role == EmployeeRole.Regular)
+                if (createTicket != null)
                 {
-                    createTicket.Submit(dateTimeReported.Value, tbIncidentSubject.Text, cbIncidentType.Text, employee, (Priority)Enum.Parse(typeof(Priority), cbPriority.Text), cbDeadline.SelectedIndex, rtbDescription.Text);
-                }
-                else if(employee.Role == EmployeeRole.ServiceDesk)
-                {
-                    string selectedUser = cbUser.SelectedItem as string;
-                    if(selectedUser == "Select Employee")
+                    if (employee.Role == EmployeeRole.Regular)
                     {
-                        MessageBox.Show("Please select a valid employee from the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        createTicket.Submit(dateTimeReported.Value, tbIncidentSubject.Text, cbIncidentType.Text, employee, (Priority)Enum.Parse(typeof(Priority), cbPriority.Text), cbDeadline.SelectedIndex, rtbDescription.Text);
                     }
-                    else
+                    else if (employee.Role == EmployeeRole.ServiceDesk)
                     {
-                        List<EmployeeModel> employees = employeeLogic.GetAllEmployees();
-                        EmployeeModel selectedEmployee = employees.FirstOrDefault(emp => emp.Username == selectedUser);
-
-                        if (selectedEmployee != null)
+                        string selectedUser = cbUser.SelectedItem as string;
+                        if (selectedUser == "Select Employee")
                         {
-                            createTicket.Submit(dateTimeReported.Value, tbIncidentSubject.Text, cbIncidentType.Text, selectedEmployee, (Priority)Enum.Parse(typeof(Priority), cbPriority.Text), cbDeadline.SelectedIndex, rtbDescription.Text);
+                            MessageBox.Show("Please select a valid employee from the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
-                            MessageBox.Show("Selected User Not Found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                            List<EmployeeModel> employees = employeeLogic.GetAllEmployees();
+                            EmployeeModel selectedEmployee = employees.FirstOrDefault(emp => emp.Username == selectedUser);
 
+                            if (selectedEmployee != null)
+                            {
+                                createTicket.Submit(dateTimeReported.Value, tbIncidentSubject.Text, cbIncidentType.Text, selectedEmployee, (Priority)Enum.Parse(typeof(Priority), cbPriority.Text), cbDeadline.SelectedIndex, rtbDescription.Text);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Selected User Not Found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+                    }
+                    MessageBox.Show("Ticket successfully submitted", "The Garden Group");
+                    this.Close();
+                    }
+else
+{
+    MessageBox.Show("Error creating ticket logic.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+}
                 }
-                MessageBox.Show("Ticket successfully submitted", "The Garden Group");
-                this.Close();
-            }
             catch
             {
                 MessageBox.Show("We were unable to submit your ticket. Please check all fields and try again.", "The Garden Group");

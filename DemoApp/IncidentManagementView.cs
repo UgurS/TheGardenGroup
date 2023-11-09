@@ -1,4 +1,5 @@
-﻿using Logic;
+﻿using DAL;
+using Logic;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace DemoApp
         EmployeeModel employee;
         TicketsLogic ticketsLogic;
         List<TicketModel> tickets;
+        private EmployeeLogic employeeLogic;
         public IncidentManagementView(EmployeeModel employee)
         {
             InitializeComponent();
@@ -28,7 +30,6 @@ namespace DemoApp
             ticketsLogic = new TicketsLogic();
             tickets = new List<TicketModel>();
         }
-
         private void createTicketButton_Click(object sender, EventArgs e)
         {
             form = new CreateNewIncident(employee);
@@ -126,6 +127,7 @@ namespace DemoApp
         {
             ShowTickets();
         }
+
         private void SortTicketsByPriority(PriorityOrder priorityOrder)
         {
             List<ListViewItem> listViewItems = new List<ListViewItem>();
@@ -172,14 +174,15 @@ namespace DemoApp
                 ListViewItem selectedTicket = listViewTickets.SelectedItems[0];
                 string selectedTicketId = selectedTicket.Tag.ToString();
 
-                selectedTicket.SubItems[3].Text = newStatus.ToString(); 
+                selectedTicket.SubItems[3].Text = newStatus.ToString();
 
-                ticketsLogic.EditTicket(selectedTicketId, selectedTicket.SubItems[0].Text, employee, DateTime.Parse(selectedTicket.SubItems[2].Text), newStatus);
+                ticketsLogic.CloseTicket(selectedTicketId, newStatus);
 
                 MessageBox.Show($"Ticket status updated to {newStatus}", "Status Change");
                 EnableButtonsBasedOnStatus(newStatus);
             }
         }
+
         private void listViewTickets_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewTickets.SelectedItems.Count > 0)
@@ -191,12 +194,13 @@ namespace DemoApp
             }
         }
 
-        // still work on this
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-            CreateNewUser createNewUser = new CreateNewUser();
-            createNewUser.Show();
+
+            UserManagementView userManagementView = new UserManagementView(new EmployeeLogic(), employee);
+            userManagementView.Show();
         }
+
     }
 }

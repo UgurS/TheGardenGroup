@@ -24,7 +24,8 @@ namespace DAL
 
                 var result = _baseDao.Read("employees", filter);
                 return BsonSerializer.Deserialize<EmployeeModel>(result[0]);
-            } catch
+            }
+            catch
             {
                 throw new Exception("Invalid username or password");
             }
@@ -55,3 +56,4 @@ namespace DAL
         }
     }
 }
+

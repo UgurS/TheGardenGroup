@@ -36,5 +36,9 @@ namespace Model
 
         [BsonElement("phoneNumber")]
         public string Phone { get; set; }
+
+        [BsonElement("ticketCount")]
+        public int TicketsCount { get; set; }
+
     }
 }

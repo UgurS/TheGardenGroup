@@ -17,7 +17,7 @@ namespace Logic
         {
             ticketDao = new TicketDao();
         }
-        public List<TicketModel> GetAllTickets()
+        public List<TicketModel> GetAllTickets()    
         {
             return ticketDao.GetAllTickets();
         }
@@ -37,6 +37,18 @@ namespace Logic
                 ticketDao.UpdateTicket("tickets", filter, update);
             }
         }
+        public void CloseTicket(string ticketId, TicketStatus newStatus)
+        {
+            if (!string.IsNullOrEmpty(ticketId))
+            {
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(ticketId));
+                var update = Builders<BsonDocument>.Update.Set("status", newStatus);
+
+                TicketDao ticketDao = new TicketDao();
+                ticketDao.UpdateTicket("tickets", filter, update);
+            }
+        }
+
         public void DeleteTicket(string ticketId)
         {
             ticketDao.DeleteTicket(ticketId);
