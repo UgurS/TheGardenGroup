@@ -112,7 +112,6 @@
   <ItemGroup>
     <Compile Include="EmployeeModel.cs" />
     <Compile Include="EmployeeRole.cs" />
-    <Compile Include="EmployeeTicketCount.cs" />
     <Compile Include="Priority.cs" />
     <Compile Include="PriorityOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
