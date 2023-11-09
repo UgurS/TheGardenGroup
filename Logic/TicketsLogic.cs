@@ -59,8 +59,7 @@ namespace Logic
             {
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
                 var update = Builders<BsonDocument>.Update
-                    .Set("reportedBy.username", newAssignee.Username)
-                    .Set("status", TicketStatus.Open);
+                    .Set("reportedBy.username", newAssignee.Username);
 
                 ticketDao.UpdateTicket("tickets", filter, update);
             }
