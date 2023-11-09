@@ -22,10 +22,6 @@ namespace DemoApp
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -41,8 +37,8 @@ namespace DemoApp
                 }
                 else if (employee.Role == EmployeeRole.ServiceDesk)
                 {
-                    IncidentManagementView incidentManagementView = new IncidentManagementView(employee);
-                    incidentManagementView.Show();
+                  ServiceDeskDashboard serviceDashboard = new ServiceDeskDashboard(employee);
+                  serviceDashboard.Show();
                 }
 
                 this.Hide();

@@ -88,7 +88,7 @@
             this.userManagementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(2, 130);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(498, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(678, 33);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -97,6 +97,7 @@
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
             this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(116, 29);
             this.dashboardToolStripMenuItem.Text = "Dashboard";
+            this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // incidentManagementToolStripMenuItem
             // 

@@ -47,15 +47,26 @@ namespace DAL
         {
             try
             {
-                var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(ticketId));
+                // Verify if ticketId is a valid ObjectId
+                if (!ObjectId.TryParse(ticketId, out var objectId))
+                {
+                    Console.WriteLine($"Invalid ObjectId: {ticketId}");
+                    throw new ArgumentException("Invalid ObjectId", nameof(ticketId));
+                }
+
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", objectId);
                 var collectionName = "tickets";
                 _baseDao.Delete(collectionName, filter);
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("An error occured while deleting the ticket from database.");
+                Console.WriteLine($"An error occurred while deleting the ticket from the database: {ex.Message}");
+                throw new Exception($"An error occurred while deleting the ticket from the database. Details: {ex.Message}", ex);
             }
         }
+
+
+
 
     }
 }

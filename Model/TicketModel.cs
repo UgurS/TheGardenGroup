@@ -21,6 +21,7 @@ namespace Model
 
         [BsonElement("incidentType")]
         public string IncidentType { get; set; }
+
         [BsonElement("reportedBy")]
         public EmployeeModel User { get; set; }
 

@@ -21,7 +21,7 @@ namespace DemoApp
         {
             InitializeComponent();
             this.employeeLogic = employeeLogic;
-            this.employee = employee;  // Assign the passed employee to the class variable
+            this.employee = employee;  
             InitializeForm();
         }
 
@@ -57,7 +57,6 @@ namespace DemoApp
         {
             this.Close();
 
-            // Pass the existing employee model to IncidentManagementView
             IncidentManagementView incidentManagementView = new IncidentManagementView(employee);
             incidentManagementView.Show();
         }
@@ -66,18 +65,25 @@ namespace DemoApp
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
             CreateNewUser createNewUser = new CreateNewUser();
-            createNewUser.UserManagementView = this; // Pass the reference
+            createNewUser.UserManagementView = this; 
             createNewUser.Show();
         }
         public void AddUserToListView(EmployeeModel employee)
         {
-            // Add the new user to the ListView
             ListViewItem item = new ListViewItem(employee.Email);
             item.SubItems.Add(employee.FirstName);
             item.SubItems.Add(employee.LastName);
             item.SubItems.Add(employee.TicketsCount.ToString());
 
             listViewUsers.Items.Add(item);
+        }
+
+        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            ServiceDeskDashboard serviceDeskDashboard = new ServiceDeskDashboard(employee);
+            serviceDeskDashboard.Show();
         }
     }
 }

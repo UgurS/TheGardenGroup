@@ -53,7 +53,11 @@ namespace DAL
             var count = collection.CountDocuments(filter);
             return count;
         }
-
+        public void Delete<T>(string collectionName, FilterDefinition<T> filter)
+        {
+            var collection = _database.GetCollection<T>(collectionName);
+            collection.DeleteOne(filter);
+        }
         internal IEnumerable<object> Aggregate(string v, BsonDocument[] pipeline)
         {
             throw new NotImplementedException();

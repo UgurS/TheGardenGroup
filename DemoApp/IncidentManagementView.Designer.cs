@@ -57,6 +57,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.buttonResolve = new System.Windows.Forms.Button();
             this.buttonCloseWithoutResolve = new System.Windows.Forms.Button();
+            this.buttonTransferTicket = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -194,6 +195,7 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(116, 38);
             this.toolStripMenuItem1.Text = "Dashboard";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // incidentManagementToolStripMenuItem
             // 
@@ -347,12 +349,25 @@
             this.buttonCloseWithoutResolve.UseVisualStyleBackColor = true;
             this.buttonCloseWithoutResolve.Click += new System.EventHandler(this.buttonCloseWithoutResolve_Click);
             // 
+            // buttonTransferTicket
+            // 
+            this.buttonTransferTicket.Enabled = false;
+            this.buttonTransferTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonTransferTicket.Location = new System.Drawing.Point(605, 185);
+            this.buttonTransferTicket.Name = "buttonTransferTicket";
+            this.buttonTransferTicket.Size = new System.Drawing.Size(194, 42);
+            this.buttonTransferTicket.TabIndex = 21;
+            this.buttonTransferTicket.Text = "Transfer Ticket";
+            this.buttonTransferTicket.UseVisualStyleBackColor = true;
+            this.buttonTransferTicket.Click += new System.EventHandler(this.buttonTransferTicket_Click);
+            // 
             // IncidentManagementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1049, 833);
+            this.Controls.Add(this.buttonTransferTicket);
             this.Controls.Add(this.buttonCloseWithoutResolve);
             this.Controls.Add(this.buttonResolve);
             this.Controls.Add(this.label6);
@@ -419,5 +434,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonResolve;
         private System.Windows.Forms.Button buttonCloseWithoutResolve;
+        private System.Windows.Forms.Button buttonTransferTicket;
     }
 }

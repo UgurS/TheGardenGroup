@@ -17,7 +17,7 @@ namespace Logic
         {
             ticketDao = new TicketDao();
         }
-        public List<TicketModel> GetAllTickets()    
+        public List<TicketModel> GetAllTickets()
         {
             return ticketDao.GetAllTickets();
         }
@@ -39,13 +39,34 @@ namespace Logic
         }
         public void CloseTicket(string ticketId, TicketStatus newStatus)
         {
-            if (!string.IsNullOrEmpty(ticketId))
+            if (ObjectId.TryParse(ticketId, out ObjectId objectId))
             {
-                var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(ticketId));
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", objectId);
                 var update = Builders<BsonDocument>.Update.Set("status", newStatus);
 
                 TicketDao ticketDao = new TicketDao();
                 ticketDao.UpdateTicket("tickets", filter, update);
+            }
+            else
+            {
+                Console.WriteLine("Invalid ObjectId string");
+            }
+        }
+
+        public void TransferTicket(TicketModel ticket, EmployeeModel newAssignee)
+        {
+            if (ticket != null && newAssignee != null)
+            {
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
+                var update = Builders<BsonDocument>.Update
+                    .Set("reportedBy.username", newAssignee.Username)
+                    .Set("status", TicketStatus.Open);
+
+                ticketDao.UpdateTicket("tickets", filter, update);
+            }
+            else
+            {
+                throw new ArgumentException("Ticket and new assignee must not be null.");
             }
         }
 
