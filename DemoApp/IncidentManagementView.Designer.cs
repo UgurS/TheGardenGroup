@@ -41,7 +41,7 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incidentManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxSubject = new System.Windows.Forms.TextBox();
@@ -64,7 +64,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(2, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1094, 130);
             this.panel1.TabIndex = 0;
@@ -102,7 +102,7 @@
             this.listViewTickets.FullRowSelect = true;
             this.listViewTickets.HideSelection = false;
             this.listViewTickets.Location = new System.Drawing.Point(9, 234);
-            this.listViewTickets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewTickets.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTickets.Name = "listViewTickets";
             this.listViewTickets.Size = new System.Drawing.Size(865, 453);
             this.listViewTickets.TabIndex = 2;
@@ -137,7 +137,7 @@
             // createTicketButton
             // 
             this.createTicketButton.Location = new System.Drawing.Point(891, 354);
-            this.createTicketButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.createTicketButton.Margin = new System.Windows.Forms.Padding(2);
             this.createTicketButton.Name = "createTicketButton";
             this.createTicketButton.Size = new System.Drawing.Size(134, 46);
             this.createTicketButton.TabIndex = 3;
@@ -148,7 +148,7 @@
             // buttonDelete
             // 
             this.buttonDelete.Location = new System.Drawing.Point(891, 451);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(134, 46);
             this.buttonDelete.TabIndex = 4;
@@ -159,7 +159,7 @@
             // buttonUpdate
             // 
             this.buttonUpdate.Location = new System.Drawing.Point(891, 546);
-            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(134, 46);
             this.buttonUpdate.TabIndex = 5;
@@ -176,7 +176,7 @@
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
+            this.dashboardToolStripMenuItem,
             this.incidentManagementToolStripMenuItem,
             this.userManagementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(2, 130);
@@ -186,17 +186,19 @@
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // toolStripMenuItem1
+            // dashboardToolStripMenuItem
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(116, 38);
-            this.toolStripMenuItem1.Text = "Dashboard";
+            this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(116, 38);
+            this.dashboardToolStripMenuItem.Text = "Dashboard";
+            this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // incidentManagementToolStripMenuItem
             // 
             this.incidentManagementToolStripMenuItem.Name = "incidentManagementToolStripMenuItem";
             this.incidentManagementToolStripMenuItem.Size = new System.Drawing.Size(201, 38);
             this.incidentManagementToolStripMenuItem.Text = "Incident Management";
+            this.incidentManagementToolStripMenuItem.Click += new System.EventHandler(this.incidentManagementToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 
@@ -208,7 +210,7 @@
             // textBoxSubject
             // 
             this.textBoxSubject.Location = new System.Drawing.Point(9, 728);
-            this.textBoxSubject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSubject.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSubject.Name = "textBoxSubject";
             this.textBoxSubject.Size = new System.Drawing.Size(187, 26);
             this.textBoxSubject.TabIndex = 7;
@@ -216,7 +218,7 @@
             // textBoxUser
             // 
             this.textBoxUser.Location = new System.Drawing.Point(262, 728);
-            this.textBoxUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxUser.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(187, 26);
             this.textBoxUser.TabIndex = 8;
@@ -224,7 +226,7 @@
             // textBoxStatus
             // 
             this.textBoxStatus.Location = new System.Drawing.Point(530, 728);
-            this.textBoxStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxStatus.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxStatus.Name = "textBoxStatus";
             this.textBoxStatus.Size = new System.Drawing.Size(187, 26);
             this.textBoxStatus.TabIndex = 9;
@@ -232,7 +234,7 @@
             // dateTimePicker
             // 
             this.dateTimePicker.Location = new System.Drawing.Point(9, 784);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(313, 26);
             this.dateTimePicker.TabIndex = 10;
@@ -273,7 +275,7 @@
             // refreshButton
             // 
             this.refreshButton.Location = new System.Drawing.Point(890, 639);
-            this.refreshButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.refreshButton.Margin = new System.Windows.Forms.Padding(2);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(134, 46);
             this.refreshButton.TabIndex = 14;
@@ -286,7 +288,7 @@
             this.radioButtonHightoLow.AutoSize = true;
             this.radioButtonHightoLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonHightoLow.Location = new System.Drawing.Point(889, 234);
-            this.radioButtonHightoLow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonHightoLow.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonHightoLow.Name = "radioButtonHightoLow";
             this.radioButtonHightoLow.Size = new System.Drawing.Size(141, 26);
             this.radioButtonHightoLow.TabIndex = 15;
@@ -300,7 +302,7 @@
             this.radioButtonLowToHigh.AutoSize = true;
             this.radioButtonLowToHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonLowToHigh.Location = new System.Drawing.Point(889, 280);
-            this.radioButtonLowToHigh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonLowToHigh.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonLowToHigh.Name = "radioButtonLowToHigh";
             this.radioButtonLowToHigh.Size = new System.Drawing.Size(141, 26);
             this.radioButtonLowToHigh.TabIndex = 16;
@@ -345,9 +347,10 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "IncidentManagementView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IncidentManagementView";
             this.Load += new System.EventHandler(this.IncidentManagementView_Load);
             this.panel1.ResumeLayout(false);
@@ -369,7 +372,7 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem incidentManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userManagementToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader Subject;

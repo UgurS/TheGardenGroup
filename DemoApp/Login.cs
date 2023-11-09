@@ -36,13 +36,15 @@ namespace DemoApp
 
                 if (employee.Role == EmployeeRole.Regular)
                 {
-                    RegularDashboard regularDashboard = new RegularDashboard(employee);
-                    regularDashboard.Show();
+                    Dashboard dashboard = new Dashboard(employee);
+                    dashboard.Show();
                 }
                 else if (employee.Role == EmployeeRole.ServiceDesk)
                 {
-                    IncidentManagementView incidentManagementView = new IncidentManagementView(employee);
-                    incidentManagementView.Show();
+                    //IncidentManagementView incidentManagementView = new IncidentManagementView(employee);
+                    //incidentManagementView.Show();
+                    Dashboard dashboard = new Dashboard(employee);
+                    dashboard.Show();
                 }
 
                 this.Hide();
