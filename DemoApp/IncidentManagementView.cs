@@ -91,7 +91,7 @@ namespace DemoApp
         public void ShowTickets()
         {
             listViewTickets.Items.Clear();
-            List<TicketModel> tickets = ticketsLogic.GetAllTickets();
+            List<TicketModel> tickets = ticketsLogic.GetAllTickets(employee);
             GetTickets(tickets);
         }
         private void ClearTextBoxes()
@@ -154,6 +154,18 @@ namespace DemoApp
             this.Close();
             CreateNewUser createNewUser = new CreateNewUser();
             createNewUser.Show();
+        }
+
+        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(employee);
+            dashboard.Show();
+            this.Hide();
+        }
+
+        private void incidentManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowTickets();
         }
     }
 }

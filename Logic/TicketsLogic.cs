@@ -17,10 +17,37 @@ namespace Logic
         {
             ticketDao = new TicketDao();
         }
+
         public List<TicketModel> GetAllTickets()
         {
             return ticketDao.GetAllTickets();
         }
+
+        public List<TicketModel> GetAllTickets(EmployeeModel employee)
+        {
+            if (employee.Role == EmployeeRole.Regular)
+            {
+                return ticketDao.GetAllTickets(employee);
+            }
+
+            return GetAllTickets();
+        }
+
+        public int CountTicketStatus(List<TicketModel> tickets, TicketStatus status)
+        {
+            int count = 0;
+
+            foreach (var ticket in tickets)
+            {
+                if (ticket.Status == status)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
         public void EditTicket(string ticketId, string subject, EmployeeModel reportedBy, DateTime openDate, TicketStatus status)
         {
 
