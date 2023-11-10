@@ -21,17 +21,16 @@ namespace Logic
         {
             return ticketDao.GetAllTickets();
         }
-        public void EditTicket(string ticketId, string subject, EmployeeModel reportedBy, DateTime openDate, TicketStatus status)
+        public void EditTicket(string ticketId, string subject, Priority priority, DateTime openDate)
         {
-
-            if (!string.IsNullOrEmpty(subject) && reportedBy != null)
+            ObjectId.TryParse(ticketId, out ObjectId ticketObjectId);
+            if (!string.IsNullOrEmpty(subject) && priority != null)
             {
-                var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(ticketId));
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", ticketObjectId);
                 var update = Builders<BsonDocument>.Update
                     .Set("subject", subject)
-                    .Set("reportedBy.username", reportedBy.Username)
-                    .Set("openDate", openDate)
-                    .Set("status", status);
+                    .Set("priority", priority)
+                    .Set("openDate", openDate);
 
                 TicketDao ticketDao = new TicketDao();
                 ticketDao.UpdateTicket("tickets", filter, update);

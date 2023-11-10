@@ -69,12 +69,12 @@ namespace DemoApp
 
                     string selectedTicketId = listViewTickets.SelectedItems[0].Tag.ToString();
                     string updatedSubject = textBoxSubject.Text;
-                    EmployeeModel updatedUser = new EmployeeModel { Username = textBoxUser.Text };
+                    string updatePriority = textBoxPriority.Text;
                     DateTime updatedDate = dateTimePicker.Value;
-                    string updatedStatus = textBoxStatus.Text;
-                    if (Enum.TryParse<TicketStatus>(updatedStatus, out TicketStatus status))
+                    
+                    if (Enum.TryParse<Priority>(updatePriority, out Priority priority ))
                     {
-                        ticketsLogic.EditTicket(selectedTicketId, updatedSubject, updatedUser, updatedDate, status);
+                        ticketsLogic.EditTicket(selectedTicketId, updatedSubject, priority, updatedDate);
 
                         MessageBox.Show("Ticket updated successfully");
                         ShowTickets();
@@ -100,8 +100,7 @@ namespace DemoApp
         private void ClearTextBoxes()
         {
             textBoxSubject.Clear();
-            textBoxUser.Clear();
-            textBoxStatus.Clear();
+            textBoxPriority.Clear();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
