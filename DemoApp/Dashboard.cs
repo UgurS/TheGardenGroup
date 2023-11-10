@@ -54,5 +54,18 @@ namespace DemoApp
             dashboard.Show();
             this.Hide();
         }
+
+        private void incidentManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IncidentManagementView incidentManagementView = new IncidentManagementView(employee);
+            incidentManagementView.Show();
+            this.Hide();
+        }
+
+        private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserManagementView userManagementView = new UserManagementView(new EmployeeLogic(), employee);
+            userManagementView.Show();
+        }
     }
 }

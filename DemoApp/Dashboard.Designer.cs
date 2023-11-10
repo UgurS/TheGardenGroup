@@ -120,12 +120,14 @@
             this.incidentManagementToolStripMenuItem.Name = "incidentManagementToolStripMenuItem";
             this.incidentManagementToolStripMenuItem.Size = new System.Drawing.Size(201, 38);
             this.incidentManagementToolStripMenuItem.Text = "Incident Management";
+            this.incidentManagementToolStripMenuItem.Click += new System.EventHandler(this.incidentManagementToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
             this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
             this.userManagementToolStripMenuItem.Text = "User Management";
+            this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
             // chartUnresolvedIncidents
             // 
