@@ -13,7 +13,8 @@ namespace DAL
     {
         private MongoClient _client;
         protected IMongoDatabase _database;
-        protected IMongoCollection<TicketModel> collection1;
+        public IMongoCollection<TicketModel> collection1;
+
 
         public BaseDao()
         {
@@ -45,6 +46,21 @@ namespace DAL
         {
             var collection = _database.GetCollection<BsonDocument>(collectionName);
             collection.DeleteOne(filter);
+        }
+        public long CountDocuments(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = _database.GetCollection<BsonDocument>(collectionName);
+            var count = collection.CountDocuments(filter);
+            return count;
+        }
+        public void Delete<T>(string collectionName, FilterDefinition<T> filter)
+        {
+            var collection = _database.GetCollection<T>(collectionName);
+            collection.DeleteOne(filter);
+        }
+        internal IEnumerable<object> Aggregate(string v, BsonDocument[] pipeline)
+        {
+            throw new NotImplementedException();
         }
     }
 }

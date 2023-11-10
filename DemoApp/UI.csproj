@@ -150,6 +150,18 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="TransferTicketView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransferTicketView.Designer.cs">
+      <DependentUpon>TransferTicketView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagementView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagementView.Designer.cs">
+      <DependentUpon>UserManagementView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CreateNewIncident.resx">
       <DependentUpon>CreateNewIncident.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +185,12 @@
     </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransferTicketView.resx">
+      <DependentUpon>TransferTicketView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagementView.resx">
+      <DependentUpon>UserManagementView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />

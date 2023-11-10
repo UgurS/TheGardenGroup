@@ -1,5 +1,7 @@
-﻿using Logic;
+﻿using DAL;
+using Logic;
 using Model;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +23,7 @@ namespace DemoApp
         EmployeeModel employee;
         TicketsLogic ticketsLogic;
         List<TicketModel> tickets;
+        private EmployeeLogic employeeLogic;
         public IncidentManagementView(EmployeeModel employee)
         {
             InitializeComponent();
@@ -28,11 +31,10 @@ namespace DemoApp
             ticketsLogic = new TicketsLogic();
             tickets = new List<TicketModel>();
         }
-
         private void createTicketButton_Click(object sender, EventArgs e)
         {
-          form = new CreateNewIncident(employee);
-          form.Show();
+            form = new CreateNewIncident(employee);
+            form.Show();
             ShowTickets();
         }
 
@@ -42,7 +44,7 @@ namespace DemoApp
             radioButtonLowToHigh.CheckedChanged += (s, ev) => SortTicketsByPriority(Model.PriorityOrder.LowMediumHigh);
             ShowTickets();
         }
-        private List <TicketModel> GetTickets(List<TicketModel> tickets)
+        private void GetTickets(List<TicketModel> tickets)
         {
             foreach (TicketModel ticket in tickets)
             {
@@ -51,10 +53,11 @@ namespace DemoApp
                 listViewItem.SubItems.Add(ticket.dateTime.ToString("yyyy-MM-dd HH:mm:ss"));
                 listViewItem.SubItems.Add(ticket.Status.ToString());
                 listViewItem.SubItems.Add(ticket.Priority.ToString());
-                listViewItem.Tag = ticket.Id;
+
+                listViewItem.Tag = ticket;
+
                 listViewTickets.Items.Add(listViewItem);
             }
-            return tickets;
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
@@ -107,25 +110,41 @@ namespace DemoApp
             {
                 if (listViewTickets.SelectedItems.Count > 0)
                 {
-                    foreach(ListViewItem listViewItem in listViewTickets.SelectedItems)
+                    foreach (ListViewItem listViewItem in listViewTickets.SelectedItems)
                     {
-                        string selectedTicketId = listViewItem.Tag.ToString();
-                        ticketsLogic.DeleteTicket(selectedTicketId);
+                        if (listViewItem.Tag is TicketModel selectedTicketModel)
+                        {
+                            if (ObjectId.TryParse(selectedTicketModel.Id.ToString(), out _))
+                            {
+                                string selectedTicketId = selectedTicketModel.Id.ToString();
+                                ticketsLogic.DeleteTicket(selectedTicketId);
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Invalid ObjectId: {selectedTicketModel.Id}", "Error");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Selected item is not a TicketModel. Tag type: {listViewItem.Tag?.GetType()}", "Error");
+                        }
                     }
                     MessageBox.Show("Ticket Deleted Successfully");
                     ShowTickets();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                new Exception("Deleting ticket failed");
+                MessageBox.Show($"Deleting ticket failed. Error: {ex.Message}");
             }
         }
+
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
             ShowTickets();
         }
+
         private void SortTicketsByPriority(PriorityOrder priorityOrder)
         {
             List<ListViewItem> listViewItems = new List<ListViewItem>();
@@ -149,11 +168,88 @@ namespace DemoApp
             listViewTickets.Items.AddRange(listViewItems.ToArray());
         }
 
+        private void buttonResolve_Click(object sender, EventArgs e)
+        {
+            UpdateTicketStatus(TicketStatus.Resolved);
+
+        }
+        private void buttonCloseWithoutResolve_Click(object sender, EventArgs e)
+        {
+            UpdateTicketStatus(TicketStatus.ClosedWithoutResolve);
+
+        }
+        private void EnableButtonsBasedOnStatus(TicketStatus status)
+        {
+            buttonResolve.Enabled = (status == TicketStatus.Open);
+            buttonCloseWithoutResolve.Enabled = (status == TicketStatus.Open);
+        }
+
+        private void UpdateTicketStatus(TicketStatus newStatus)
+        {
+            if (listViewTickets.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedTicket = listViewTickets.SelectedItems[0];
+                string selectedTicketId = selectedTicket.Tag.ToString();
+
+                selectedTicket.SubItems[3].Text = newStatus.ToString();
+
+                ticketsLogic.CloseTicket(selectedTicketId, newStatus);
+
+                MessageBox.Show($"Ticket status updated to {newStatus}", "Status Change");
+                EnableButtonsBasedOnStatus(newStatus);
+            }
+        }
+
+        private void listViewTickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewTickets.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedListViewItem = listViewTickets.SelectedItems[0];
+
+                if (selectedListViewItem.Tag is TicketModel selectedTicketModel)
+                {
+                    TicketStatus status = selectedTicketModel.Status;
+
+                    buttonTransferTicket.Enabled = (status == TicketStatus.Open);
+
+                    EnableButtonsBasedOnStatus(status);
+                }
+                else
+                {
+                    MessageBox.Show($"Selected item is not a TicketModel. Tag type: {selectedListViewItem.Tag?.GetType()}", "Error");
+                }
+            }
+            else
+            {
+                buttonTransferTicket.Enabled = false;
+            }
+        }
+
+
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-            CreateNewUser createNewUser = new CreateNewUser();
-            createNewUser.Show();
+
+            UserManagementView userManagementView = new UserManagementView(new EmployeeLogic(), employee);
+            userManagementView.Show();
+        }
+
+        private void buttonTransferTicket_Click(object sender, EventArgs e)
+        {
+            if (listViewTickets.SelectedItems.Count > 0)
+            {
+                TicketModel selectedTicket = (TicketModel)listViewTickets.SelectedItems[0].Tag;
+                TransferTicketView transferTicketView = new TransferTicketView(selectedTicket);
+                transferTicketView.Show();
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            ServiceDeskDashboard serviceDeskDashboard = new ServiceDeskDashboard(employee);
+            serviceDeskDashboard.Show();
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)

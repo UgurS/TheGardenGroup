@@ -22,10 +22,6 @@ namespace DemoApp
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -34,18 +30,8 @@ namespace DemoApp
                 LoginLogic loginLogic = new LoginLogic();
                 EmployeeModel employee = loginLogic.Login(tbUsername.Text, tbPassword.Text);
 
-                if (employee.Role == EmployeeRole.Regular)
-                {
-                    Dashboard dashboard = new Dashboard(employee);
-                    dashboard.Show();
-                }
-                else if (employee.Role == EmployeeRole.ServiceDesk)
-                {
-                    //IncidentManagementView incidentManagementView = new IncidentManagementView(employee);
-                    //incidentManagementView.Show();
-                    Dashboard dashboard = new Dashboard(employee);
-                    dashboard.Show();
-                }
+                Dashboard dashboard = new Dashboard(employee);
+                dashboard.Show();
 
                 this.Hide();
 

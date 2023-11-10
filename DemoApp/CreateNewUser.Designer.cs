@@ -201,7 +201,7 @@
             this.buttonCancelNewUser.TabIndex = 15;
             this.buttonCancelNewUser.Text = "CANCEL";
             this.buttonCancelNewUser.UseVisualStyleBackColor = true;
-            //this.buttonCancelNewUser.Click += new System.EventHandler(this.buttonCancelNewUser_Click);
+            this.buttonCancelNewUser.Click += new System.EventHandler(this.buttonCancelNewUser_Click);
             // 
             // buttonAddUser
             // 
@@ -213,7 +213,7 @@
             this.buttonAddUser.TabIndex = 16;
             this.buttonAddUser.Text = "ADD USER";
             this.buttonAddUser.UseVisualStyleBackColor = true;
-           // this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
+            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
             // CreateNewUser
             // 
