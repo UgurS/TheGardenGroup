@@ -64,31 +64,41 @@ namespace DemoApp
         {
             try
             {
-                string selectedTicketId = listViewTickets.SelectedItems[0].Tag.ToString();
-                string updatedSubject = textBoxSubject.Text;
-                string updatePriority = textBoxPriority.Text;
-                DateTime updatedDate = dateTimePicker.Value;
-                ObjectId.TryParse(selectedTicketId, out ObjectId ticketID);
-
-                if (Enum.TryParse<Priority>(updatePriority, out Priority priority))
+                if (listViewTickets.SelectedItems.Count > 0)
                 {
-                    ticketsLogic.EditTicket(ticketID, updatedSubject, priority, updatedDate);
+                    ListViewItem selectedItem = listViewTickets.SelectedItems[0];
+                    TicketModel selectedTicket = (TicketModel)selectedItem.Tag;
 
-                    MessageBox.Show("Ticket updated successfully");
+                    string updatedSubject = textBoxSubject.Text;
+                    string updatedPriority = textBoxPriority.Text;
+                    DateTime updatedDate = dateTimePicker.Value;
 
-                    ShowTickets();
-                    ClearTextBoxes();
+                    if (Enum.TryParse<Priority>(updatedPriority, out Priority priority))
+                    {
+                        ticketsLogic.EditTicket(selectedTicket.Id, updatedSubject, priority, updatedDate);
+
+                        MessageBox.Show("Ticket updated successfully");
+
+                        ShowTickets();
+                        ClearTextBoxes();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Priority");
+                    }
                 }
                 else
                 {
                     MessageBox.Show("No item selected");
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine($"Error: {ex.Message}");
                 throw new Exception("Editing Tickets Failed");
             }
         }
+
         public void ShowTickets()
         {
             listViewTickets.Items.Clear();

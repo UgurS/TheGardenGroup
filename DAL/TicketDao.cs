@@ -75,17 +75,20 @@ namespace DAL
             }
         }
 
-        public void UpdateTicket(string collectionName, FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> update)
+        public void UpdateTicket<T>(string collectionName, FilterDefinition<T> filter, UpdateDefinition<T> update)
         {
             try
             {
-                _baseDao.Update(collectionName, filter, update);
+                var collection = _database.GetCollection<T>(collectionName);
+                collection.UpdateOne(filter, update);
             }
             catch
             {
                 throw new Exception("Invalid Input");
             }
         }
+
+
         public void DeleteTicket(string ticketId)
         {
             try

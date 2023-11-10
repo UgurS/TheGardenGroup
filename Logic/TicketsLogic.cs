@@ -50,8 +50,6 @@ namespace Logic
 
         public void EditTicket(ObjectId ticketId, string subject, Priority priority, DateTime openDate)
         {
-            
-
             if (!string.IsNullOrEmpty(subject) && priority != null)
             {
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ticketId);
@@ -67,6 +65,7 @@ namespace Logic
                 ticketDao.UpdateTicket("tickets", filter, update);
             }
         }
+
         public void CloseTicket(string ticketId, TicketStatus newStatus)
         {
             if (ObjectId.TryParse(ticketId, out ObjectId objectId))
