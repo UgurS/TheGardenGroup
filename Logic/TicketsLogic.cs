@@ -48,17 +48,20 @@ namespace Logic
             return count;
         }
 
-        public void EditTicket(string ticketId, string subject, EmployeeModel reportedBy, DateTime openDate, TicketStatus status)
+        public void EditTicket(ObjectId ticketId, string subject, Priority priority, DateTime openDate)
         {
+            
 
-            if (!string.IsNullOrEmpty(subject) && reportedBy != null)
+            if (!string.IsNullOrEmpty(subject) && priority != null)
             {
-                var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(ticketId));
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", ticketId);
                 var update = Builders<BsonDocument>.Update
                     .Set("subject", subject)
-                    .Set("reportedBy.username", reportedBy.Username)
-                    .Set("openDate", openDate)
-                    .Set("status", status);
+                    .Set("priority", priority)
+                    .Set("openDate", openDate);
+
+                Console.WriteLine($"Updating ticket: {ticketId}");
+                Console.WriteLine($"Subject: {subject}, Priority: {priority}, OpenDate: {openDate}");
 
                 TicketDao ticketDao = new TicketDao();
                 ticketDao.UpdateTicket("tickets", filter, update);
