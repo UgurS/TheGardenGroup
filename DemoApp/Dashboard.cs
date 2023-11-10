@@ -66,6 +66,7 @@ namespace DemoApp
         {
             UserManagementView userManagementView = new UserManagementView(new EmployeeLogic(), employee);
             userManagementView.Show();
+            this.Hide();
         }
     }
 }
