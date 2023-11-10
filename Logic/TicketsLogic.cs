@@ -70,17 +70,23 @@ namespace Logic
         {
             if (ObjectId.TryParse(ticketId, out ObjectId objectId))
             {
+                Console.WriteLine($"Closing ticket: {ticketId}");
+
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", objectId);
                 var update = Builders<BsonDocument>.Update.Set("status", newStatus);
 
                 TicketDao ticketDao = new TicketDao();
                 ticketDao.UpdateTicket("tickets", filter, update);
+
+                Console.WriteLine($"Ticket closed successfully. New status: {newStatus}");
             }
             else
             {
                 Console.WriteLine("Invalid ObjectId string");
             }
         }
+
+
 
         public void TransferTicket(TicketModel ticket, EmployeeModel newAssignee)
         {
