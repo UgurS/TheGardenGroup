@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnNewIncident = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -133,18 +133,18 @@
             // 
             this.chartUnresolvedIncidents.BackColor = System.Drawing.Color.Transparent;
             this.chartUnresolvedIncidents.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.chartUnresolvedIncidents.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartUnresolvedIncidents.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartUnresolvedIncidents.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartUnresolvedIncidents.Legends.Add(legend1);
             this.chartUnresolvedIncidents.Location = new System.Drawing.Point(50, 243);
             this.chartUnresolvedIncidents.Name = "chartUnresolvedIncidents";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartUnresolvedIncidents.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartUnresolvedIncidents.Series.Add(series1);
             this.chartUnresolvedIncidents.Size = new System.Drawing.Size(770, 555);
             this.chartUnresolvedIncidents.TabIndex = 9;
             this.chartUnresolvedIncidents.Text = "chart1";
@@ -173,6 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1049, 833);
             this.Controls.Add(this.btnViewAll);
             this.Controls.Add(this.label3);

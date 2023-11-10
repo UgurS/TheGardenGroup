@@ -86,7 +86,11 @@ namespace Logic
             {
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ticket.Id);
                 var update = Builders<BsonDocument>.Update
-                    .Set("reportedBy.username", newAssignee.Username);
+                    .Set("reportedBy", new BsonDocument
+                    {
+         { "_id", newAssignee.Id },
+         { "username", newAssignee.Username }
+                    });
 
                 ticketDao.UpdateTicket("tickets", filter, update);
             }
@@ -95,6 +99,8 @@ namespace Logic
                 throw new ArgumentException("Ticket and new assignee must not be null.");
             }
         }
+
+
 
         public void DeleteTicket(string ticketId)
         {

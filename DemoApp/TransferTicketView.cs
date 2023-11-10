@@ -65,6 +65,8 @@ namespace DemoApp
             EmployeeModel selectedUser = (EmployeeModel)comboBoxUsersList.SelectedItem;
             ticketsLogic.TransferTicket(selectedTicket, selectedUser);
 
+            MessageBox.Show("Ticket Transferred Successfully.", "Successful");
+
             this.Close();
         }
     }
