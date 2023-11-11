@@ -41,6 +41,10 @@
             this.columnLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnTickets = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonAddUser = new System.Windows.Forms.Button();
+            this.radiobuttonFirstName = new System.Windows.Forms.RadioButton();
+            this.radiobuttonTicketHigh = new System.Windows.Forms.RadioButton();
+            this.radiobuttonLastName = new System.Windows.Forms.RadioButton();
+            this.radiobuttonTicketLow = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +92,7 @@
             this.userManagementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(2, 130);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(678, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(498, 33);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -121,7 +125,7 @@
             this.columnTickets});
             this.listViewUsers.HideSelection = false;
             this.listViewUsers.LabelWrap = false;
-            this.listViewUsers.Location = new System.Drawing.Point(9, 234);
+            this.listViewUsers.Location = new System.Drawing.Point(9, 215);
             this.listViewUsers.Name = "listViewUsers";
             this.listViewUsers.Size = new System.Drawing.Size(821, 522);
             this.listViewUsers.TabIndex = 3;
@@ -151,7 +155,7 @@
             // buttonAddUser
             // 
             this.buttonAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonAddUser.Location = new System.Drawing.Point(818, 159);
+            this.buttonAddUser.Location = new System.Drawing.Point(818, 150);
             this.buttonAddUser.Name = "buttonAddUser";
             this.buttonAddUser.Size = new System.Drawing.Size(207, 60);
             this.buttonAddUser.TabIndex = 4;
@@ -159,12 +163,68 @@
             this.buttonAddUser.UseVisualStyleBackColor = true;
             this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
+            // radiobuttonFirstName
+            // 
+            this.radiobuttonFirstName.AutoSize = true;
+            this.radiobuttonFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.radiobuttonFirstName.Location = new System.Drawing.Point(855, 260);
+            this.radiobuttonFirstName.Name = "radiobuttonFirstName";
+            this.radiobuttonFirstName.Size = new System.Drawing.Size(184, 26);
+            this.radiobuttonFirstName.TabIndex = 5;
+            this.radiobuttonFirstName.TabStop = true;
+            this.radiobuttonFirstName.Text = "Sort by First Name";
+            this.radiobuttonFirstName.UseVisualStyleBackColor = true;
+            this.radiobuttonFirstName.CheckedChanged += new System.EventHandler(this.radiobuttonFirstName_CheckedChanged);
+            // 
+            // radiobuttonTicketHigh
+            // 
+            this.radiobuttonTicketHigh.AutoSize = true;
+            this.radiobuttonTicketHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.radiobuttonTicketHigh.Location = new System.Drawing.Point(855, 355);
+            this.radiobuttonTicketHigh.Name = "radiobuttonTicketHigh";
+            this.radiobuttonTicketHigh.Size = new System.Drawing.Size(169, 26);
+            this.radiobuttonTicketHigh.TabIndex = 6;
+            this.radiobuttonTicketHigh.TabStop = true;
+            this.radiobuttonTicketHigh.Text = "Sort Ticket High ";
+            this.radiobuttonTicketHigh.UseVisualStyleBackColor = true;
+            this.radiobuttonTicketHigh.CheckedChanged += new System.EventHandler(this.radiobuttonTicketHigh_CheckedChanged);
+            // 
+            // radiobuttonLastName
+            // 
+            this.radiobuttonLastName.AutoSize = true;
+            this.radiobuttonLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.radiobuttonLastName.Location = new System.Drawing.Point(855, 307);
+            this.radiobuttonLastName.Name = "radiobuttonLastName";
+            this.radiobuttonLastName.Size = new System.Drawing.Size(183, 26);
+            this.radiobuttonLastName.TabIndex = 7;
+            this.radiobuttonLastName.TabStop = true;
+            this.radiobuttonLastName.Text = "Sort by Last Name";
+            this.radiobuttonLastName.UseVisualStyleBackColor = true;
+            this.radiobuttonLastName.CheckedChanged += new System.EventHandler(this.radioButtonLastName_CheckedChanged);
+            // 
+            // radiobuttonTicketLow
+            // 
+            this.radiobuttonTicketLow.AutoSize = true;
+            this.radiobuttonTicketLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.radiobuttonTicketLow.Location = new System.Drawing.Point(855, 403);
+            this.radiobuttonTicketLow.Name = "radiobuttonTicketLow";
+            this.radiobuttonTicketLow.Size = new System.Drawing.Size(160, 26);
+            this.radiobuttonTicketLow.TabIndex = 8;
+            this.radiobuttonTicketLow.TabStop = true;
+            this.radiobuttonTicketLow.Text = "Sort Ticket Low";
+            this.radiobuttonTicketLow.UseVisualStyleBackColor = true;
+            this.radiobuttonTicketLow.CheckedChanged += new System.EventHandler(this.radiobuttonTicketLow_CheckedChanged);
+            // 
             // UserManagementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1049, 833);
+            this.Controls.Add(this.radiobuttonTicketLow);
+            this.Controls.Add(this.radiobuttonLastName);
+            this.Controls.Add(this.radiobuttonTicketHigh);
+            this.Controls.Add(this.radiobuttonFirstName);
             this.Controls.Add(this.buttonAddUser);
             this.Controls.Add(this.listViewUsers);
             this.Controls.Add(this.panel1);
@@ -195,5 +255,9 @@
         private System.Windows.Forms.ColumnHeader columnEmail;
         private System.Windows.Forms.ColumnHeader columnTickets;
         private System.Windows.Forms.Button buttonAddUser;
+        private System.Windows.Forms.RadioButton radiobuttonFirstName;
+        private System.Windows.Forms.RadioButton radiobuttonTicketHigh;
+        private System.Windows.Forms.RadioButton radiobuttonLastName;
+        private System.Windows.Forms.RadioButton radiobuttonTicketLow;
     }
 }
