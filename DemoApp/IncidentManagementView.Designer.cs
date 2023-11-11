@@ -57,6 +57,8 @@
             this.buttonCloseWithoutResolve = new System.Windows.Forms.Button();
             this.buttonTransferTicket = new System.Windows.Forms.Button();
             this.btnArchive = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbFilter = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -353,12 +355,31 @@
             this.btnArchive.UseVisualStyleBackColor = true;
             this.btnArchive.Click += new System.EventHandler(this.btnArchive_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 204);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 20);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Filter";
+            // 
+            // tbFilter
+            // 
+            this.tbFilter.Location = new System.Drawing.Point(63, 201);
+            this.tbFilter.Name = "tbFilter";
+            this.tbFilter.Size = new System.Drawing.Size(146, 26);
+            this.tbFilter.TabIndex = 24;
+            this.tbFilter.TextChanged += new System.EventHandler(this.tbFilter_TextChanged);
+            // 
             // IncidentManagementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1049, 833);
+            this.Controls.Add(this.tbFilter);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnArchive);
             this.Controls.Add(this.buttonTransferTicket);
             this.Controls.Add(this.buttonCloseWithoutResolve);
@@ -426,5 +447,7 @@
         private System.Windows.Forms.Button buttonCloseWithoutResolve;
         private System.Windows.Forms.Button buttonTransferTicket;
         private System.Windows.Forms.Button btnArchive;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbFilter;
     }
 }

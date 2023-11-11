@@ -24,12 +24,14 @@ namespace DemoApp
         TicketsLogic ticketsLogic;
         List<TicketModel> tickets;
         private EmployeeLogic employeeLogic;
+        TicketFilterLogic filterLogic;
         public IncidentManagementView(EmployeeModel employee)
         {
             InitializeComponent();
             this.employee = employee;
             ticketsLogic = new TicketsLogic();
             tickets = new List<TicketModel>();
+            filterLogic = new TicketFilterLogic();
         }
         private void createTicketButton_Click(object sender, EventArgs e)
         {
@@ -177,7 +179,13 @@ namespace DemoApp
 
             foreach (ListViewItem item in listViewTickets.Items)
             {
-                listViewItems.Add(item);
+                bool itemMatchesFilter = item.SubItems.Cast<ListViewItem.ListViewSubItem>()
+                    .Any(subItem => subItem.Text.ToLower().Contains(tbFilter.Text));
+
+                if (tbFilter.Text.Length == 0 || (tbFilter.Text.Length > 0 && itemMatchesFilter))
+                {
+                    listViewItems.Add(item);
+                }
             }
 
             if (priorityOrder == PriorityOrder.HighMediumLow)
@@ -295,6 +303,25 @@ namespace DemoApp
         {
             ArchiveTickets archiveTickets = new ArchiveTickets(tickets);
             archiveTickets.Show();
+        }
+
+        private void tbFilter_TextChanged(object sender, EventArgs e)
+        {
+            if (tbFilter.Text.Length > 0) {
+                filterLogic.FilterListView(listViewTickets, tbFilter);
+            } else
+            {
+                listViewTickets.Items.Clear();
+                GetTickets(tickets);
+                if (radioButtonHightoLow.Checked)
+                {
+                    SortTicketsByPriority(Model.PriorityOrder.HighMediumLow);
+                } else if (radioButtonLowToHigh.Checked)
+                {
+                    SortTicketsByPriority(Model.PriorityOrder.LowMediumHigh);
+                }
+
+            }
         }
     }
 }
