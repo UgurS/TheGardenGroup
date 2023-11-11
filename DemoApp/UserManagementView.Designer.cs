@@ -182,10 +182,10 @@
             this.radiobuttonTicketHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.radiobuttonTicketHigh.Location = new System.Drawing.Point(855, 355);
             this.radiobuttonTicketHigh.Name = "radiobuttonTicketHigh";
-            this.radiobuttonTicketHigh.Size = new System.Drawing.Size(169, 26);
+            this.radiobuttonTicketHigh.Size = new System.Drawing.Size(178, 26);
             this.radiobuttonTicketHigh.TabIndex = 6;
             this.radiobuttonTicketHigh.TabStop = true;
-            this.radiobuttonTicketHigh.Text = "Sort Ticket High ";
+            this.radiobuttonTicketHigh.Text = "Sort Tickets High ";
             this.radiobuttonTicketHigh.UseVisualStyleBackColor = true;
             this.radiobuttonTicketHigh.CheckedChanged += new System.EventHandler(this.radiobuttonTicketHigh_CheckedChanged);
             // 
@@ -208,10 +208,10 @@
             this.radiobuttonTicketLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.radiobuttonTicketLow.Location = new System.Drawing.Point(855, 403);
             this.radiobuttonTicketLow.Name = "radiobuttonTicketLow";
-            this.radiobuttonTicketLow.Size = new System.Drawing.Size(160, 26);
+            this.radiobuttonTicketLow.Size = new System.Drawing.Size(169, 26);
             this.radiobuttonTicketLow.TabIndex = 8;
             this.radiobuttonTicketLow.TabStop = true;
-            this.radiobuttonTicketLow.Text = "Sort Ticket Low";
+            this.radiobuttonTicketLow.Text = "Sort Tickets Low";
             this.radiobuttonTicketLow.UseVisualStyleBackColor = true;
             this.radiobuttonTicketLow.CheckedChanged += new System.EventHandler(this.radiobuttonTicketLow_CheckedChanged);
             // 
