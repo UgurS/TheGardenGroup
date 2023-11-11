@@ -82,8 +82,8 @@ namespace DemoApp
         {
             this.Close();
 
-            Dashboard serviceDeskDashboard = new Dashboard(employee);
-            serviceDeskDashboard.Show();
+            Dashboard dashboard = new Dashboard(employee);
+            dashboard.Show();
         }
     }
 }
