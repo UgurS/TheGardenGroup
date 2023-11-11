@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using System.Xml.Linq;
+using System.Collections.ObjectModel;
 
 namespace DAL
 {
@@ -29,6 +30,19 @@ namespace DAL
                 throw new Exception("Missing or invalid input");
             }
         }
+
+        public void AddTicketsToArchive(List<BsonDocument> documents)
+        {
+            try
+            {
+                _baseDao.InsertMany("archive", documents);
+            }
+            catch
+            {
+                throw new Exception("Missing or invalid input");
+            }
+        }
+
         public List<TicketModel> GetAllTickets()
         {
             var tickets = collection1.Find(_ => true).ToList();
@@ -111,8 +125,19 @@ namespace DAL
             }
         }
 
-
-
-
+        public void DeleteTickets(List<TicketModel> ticketsToDelete)
+        {
+            try
+            {
+                var ticketIdsToDelete = ticketsToDelete.Select(ticket => ticket.Id).ToList();
+                var filter = Builders<TicketModel>.Filter.In("_id", ticketIdsToDelete);
+                _baseDao.DeleteMany("tickets", filter);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while deleting the ticket from the database: {ex.Message}");
+                throw new Exception($"An error occurred while deleting the ticket from the database. Details: {ex.Message}", ex);
+            }
+        }
     }
 }
