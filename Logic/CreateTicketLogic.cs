@@ -28,7 +28,7 @@ namespace Logic
                     { "priority", priority.ToString() },
                     { "deadline", GetDeadline(deadlineIndex) },
                     { "description", description },
-                    { "openDate", DateTime.Now },
+                    { "openDate", dateTime },
                     { "status", TicketStatus.Open },
                 };
 

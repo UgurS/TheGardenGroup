@@ -215,16 +215,25 @@ namespace DemoApp
             if (listViewTickets.SelectedItems.Count > 0)
             {
                 ListViewItem selectedTicket = listViewTickets.SelectedItems[0];
-                string selectedTicketId = selectedTicket.Tag.ToString();
 
-                selectedTicket.SubItems[3].Text = newStatus.ToString();
+                if (selectedTicket.Tag is TicketModel selectedTicketModel)
+                {
+                    string selectedTicketId = selectedTicketModel.Id.ToString();
 
-                ticketsLogic.CloseTicket(selectedTicketId, newStatus);
+                    selectedTicket.SubItems[3].Text = newStatus.ToString();
 
-                MessageBox.Show($"Ticket status updated to {newStatus}", "Status Change");
-                EnableButtonsBasedOnStatus(newStatus);
+                    ticketsLogic.CloseTicket(selectedTicketId, newStatus);
+
+                    MessageBox.Show($"Ticket status updated to {newStatus}", "Status Change");
+                    EnableButtonsBasedOnStatus(newStatus);
+                }
+                else
+                {
+                    MessageBox.Show("Selected item is not a TicketModel", "Error");
+                }
             }
         }
+
 
         private void listViewTickets_SelectedIndexChanged(object sender, EventArgs e)
         {
