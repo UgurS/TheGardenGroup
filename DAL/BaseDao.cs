@@ -29,6 +29,12 @@ namespace DAL
             collection.InsertOne(document);
         }
 
+        public void InsertMany(string collectionName, List<BsonDocument> document)
+        {
+            var collection = _database.GetCollection<BsonDocument>(collectionName);
+            collection.InsertMany(document);
+        }
+
         public List<BsonDocument> Read(string collectionName, BsonDocument filter)
         {
             var collection = _database.GetCollection<BsonDocument>(collectionName);
@@ -47,6 +53,13 @@ namespace DAL
             var collection = _database.GetCollection<BsonDocument>(collectionName);
             collection.DeleteOne(filter);
         }
+
+        public void DeleteMany<T>(string collectionName, FilterDefinition<T> filter)
+        {
+            var collection = _database.GetCollection<T>(collectionName);
+            collection.DeleteMany(filter);
+        }
+
         public long CountDocuments(string collectionName, FilterDefinition<BsonDocument> filter)
         {
             var collection = _database.GetCollection<BsonDocument>(collectionName);

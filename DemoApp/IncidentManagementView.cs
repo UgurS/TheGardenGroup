@@ -51,7 +51,7 @@ namespace DemoApp
             if (employee.Role == EmployeeRole.Regular)
             {
                 List<Control> serviceDeskControls = new List<Control>() {
-                    buttonTransferTicket, buttonDelete, buttonUpdate, refreshButton, buttonResolve, buttonCloseWithoutResolve, labelSubject, textBoxSubject, labelPriority, textBoxPriority, dateTimePicker
+                    btnArchive, buttonTransferTicket, buttonDelete, buttonUpdate, refreshButton, buttonResolve, buttonCloseWithoutResolve, labelSubject, textBoxSubject, labelPriority, textBoxPriority, dateTimePicker
                 };
 
                 foreach (var item in serviceDeskControls)
@@ -121,7 +121,7 @@ namespace DemoApp
         public void ShowTickets()
         {
             listViewTickets.Items.Clear();
-            List<TicketModel> tickets = ticketsLogic.GetAllTickets(employee);
+            tickets = ticketsLogic.GetAllTickets(employee);
             GetTickets(tickets);
         }
         private void ClearTextBoxes()
@@ -280,6 +280,12 @@ namespace DemoApp
         private void incidentManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowTickets();
+        }
+
+        private void btnArchive_Click(object sender, EventArgs e)
+        {
+            ArchiveTickets archiveTickets = new ArchiveTickets(tickets);
+            archiveTickets.Show();
         }
     }
 }

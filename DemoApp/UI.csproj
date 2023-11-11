@@ -50,6 +50,7 @@
     <Reference Include="MongoDB.Libmongocrypt, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MongoDB.Libmongocrypt.1.2.2\lib\net452\MongoDB.Libmongocrypt.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="SharpCompress, Version=0.23.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpCompress.0.23.0\lib\net45\SharpCompress.dll</HintPath>
     </Reference>
@@ -118,6 +119,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchiveTickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArchiveTickets.Designer.cs">
+      <DependentUpon>ArchiveTickets.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateNewIncident.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +169,9 @@
     <Compile Include="UserManagementView.Designer.cs">
       <DependentUpon>UserManagementView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ArchiveTickets.resx">
+      <DependentUpon>ArchiveTickets.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateNewIncident.resx">
       <DependentUpon>CreateNewIncident.cs</DependentUpon>
     </EmbeddedResource>

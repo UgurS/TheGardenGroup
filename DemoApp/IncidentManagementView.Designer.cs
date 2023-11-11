@@ -56,6 +56,7 @@
             this.buttonResolve = new System.Windows.Forms.Button();
             this.buttonCloseWithoutResolve = new System.Windows.Forms.Button();
             this.buttonTransferTicket = new System.Windows.Forms.Button();
+            this.btnArchive = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +66,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(2, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1051, 130);
             this.panel1.TabIndex = 0;
@@ -103,7 +104,7 @@
             this.listViewTickets.FullRowSelect = true;
             this.listViewTickets.HideSelection = false;
             this.listViewTickets.Location = new System.Drawing.Point(9, 234);
-            this.listViewTickets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewTickets.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTickets.Name = "listViewTickets";
             this.listViewTickets.Size = new System.Drawing.Size(865, 453);
             this.listViewTickets.TabIndex = 2;
@@ -139,7 +140,7 @@
             // createTicketButton
             // 
             this.createTicketButton.Location = new System.Drawing.Point(891, 355);
-            this.createTicketButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.createTicketButton.Margin = new System.Windows.Forms.Padding(2);
             this.createTicketButton.Name = "createTicketButton";
             this.createTicketButton.Size = new System.Drawing.Size(134, 46);
             this.createTicketButton.TabIndex = 3;
@@ -150,7 +151,7 @@
             // buttonDelete
             // 
             this.buttonDelete.Location = new System.Drawing.Point(891, 425);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(134, 46);
             this.buttonDelete.TabIndex = 4;
@@ -161,7 +162,7 @@
             // buttonUpdate
             // 
             this.buttonUpdate.Location = new System.Drawing.Point(891, 495);
-            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(134, 46);
             this.buttonUpdate.TabIndex = 5;
@@ -212,7 +213,7 @@
             // textBoxSubject
             // 
             this.textBoxSubject.Location = new System.Drawing.Point(9, 728);
-            this.textBoxSubject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSubject.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSubject.Name = "textBoxSubject";
             this.textBoxSubject.Size = new System.Drawing.Size(187, 26);
             this.textBoxSubject.TabIndex = 7;
@@ -220,7 +221,7 @@
             // textBoxPriority
             // 
             this.textBoxPriority.Location = new System.Drawing.Point(262, 728);
-            this.textBoxPriority.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPriority.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPriority.Name = "textBoxPriority";
             this.textBoxPriority.Size = new System.Drawing.Size(187, 26);
             this.textBoxPriority.TabIndex = 8;
@@ -228,7 +229,7 @@
             // dateTimePicker
             // 
             this.dateTimePicker.Location = new System.Drawing.Point(9, 784);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(313, 26);
             this.dateTimePicker.TabIndex = 10;
@@ -258,7 +259,7 @@
             // refreshButton
             // 
             this.refreshButton.Location = new System.Drawing.Point(891, 565);
-            this.refreshButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.refreshButton.Margin = new System.Windows.Forms.Padding(2);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(134, 46);
             this.refreshButton.TabIndex = 14;
@@ -271,7 +272,7 @@
             this.radioButtonHightoLow.AutoSize = true;
             this.radioButtonHightoLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonHightoLow.Location = new System.Drawing.Point(889, 234);
-            this.radioButtonHightoLow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonHightoLow.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonHightoLow.Name = "radioButtonHightoLow";
             this.radioButtonHightoLow.Size = new System.Drawing.Size(141, 26);
             this.radioButtonHightoLow.TabIndex = 15;
@@ -285,7 +286,7 @@
             this.radioButtonLowToHigh.AutoSize = true;
             this.radioButtonLowToHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonLowToHigh.Location = new System.Drawing.Point(889, 280);
-            this.radioButtonLowToHigh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonLowToHigh.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonLowToHigh.Name = "radioButtonLowToHigh";
             this.radioButtonLowToHigh.Size = new System.Drawing.Size(141, 26);
             this.radioButtonLowToHigh.TabIndex = 16;
@@ -309,7 +310,7 @@
             // 
             this.buttonResolve.Enabled = false;
             this.buttonResolve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonResolve.Location = new System.Drawing.Point(891, 662);
+            this.buttonResolve.Location = new System.Drawing.Point(891, 693);
             this.buttonResolve.Name = "buttonResolve";
             this.buttonResolve.Size = new System.Drawing.Size(134, 50);
             this.buttonResolve.TabIndex = 19;
@@ -321,7 +322,7 @@
             // 
             this.buttonCloseWithoutResolve.Enabled = false;
             this.buttonCloseWithoutResolve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonCloseWithoutResolve.Location = new System.Drawing.Point(889, 728);
+            this.buttonCloseWithoutResolve.Location = new System.Drawing.Point(891, 749);
             this.buttonCloseWithoutResolve.Name = "buttonCloseWithoutResolve";
             this.buttonCloseWithoutResolve.Size = new System.Drawing.Size(134, 61);
             this.buttonCloseWithoutResolve.TabIndex = 20;
@@ -341,12 +342,24 @@
             this.buttonTransferTicket.UseVisualStyleBackColor = true;
             this.buttonTransferTicket.Click += new System.EventHandler(this.buttonTransferTicket_Click);
             // 
+            // btnArchive
+            // 
+            this.btnArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnArchive.Location = new System.Drawing.Point(891, 621);
+            this.btnArchive.Name = "btnArchive";
+            this.btnArchive.Size = new System.Drawing.Size(134, 61);
+            this.btnArchive.TabIndex = 22;
+            this.btnArchive.Text = "Archive Tickets";
+            this.btnArchive.UseVisualStyleBackColor = true;
+            this.btnArchive.Click += new System.EventHandler(this.btnArchive_Click);
+            // 
             // IncidentManagementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1049, 833);
+            this.Controls.Add(this.btnArchive);
             this.Controls.Add(this.buttonTransferTicket);
             this.Controls.Add(this.buttonCloseWithoutResolve);
             this.Controls.Add(this.buttonResolve);
@@ -367,7 +380,7 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "IncidentManagementView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -412,5 +425,6 @@
         private System.Windows.Forms.Button buttonResolve;
         private System.Windows.Forms.Button buttonCloseWithoutResolve;
         private System.Windows.Forms.Button buttonTransferTicket;
+        private System.Windows.Forms.Button btnArchive;
     }
 }
