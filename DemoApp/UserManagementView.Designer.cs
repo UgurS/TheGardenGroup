@@ -230,6 +230,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "UserManagementView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserManagementView";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

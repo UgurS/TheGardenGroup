@@ -39,6 +39,11 @@ namespace DemoApp
             chartUnresolvedIncidents.Series["Series1"].Points.AddXY("Unresolved", unresolved);
             chartUnresolvedIncidents.Series["Series1"].Points.AddXY("Resolved", resolved);
             chartUnresolvedIncidents.Series["Series1"].Points.AddXY("Past Deadline", pastDeadline);
+
+            if (employee.Role == EmployeeRole.Regular)
+            {
+                userManagementToolStripMenuItem.Visible = false;
+            }
         }
 
         private void btnViewAll_Click(object sender, EventArgs e)

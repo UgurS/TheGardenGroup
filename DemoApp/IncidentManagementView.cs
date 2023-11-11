@@ -43,7 +43,26 @@ namespace DemoApp
             radioButtonHightoLow.CheckedChanged += (s, ev) => SortTicketsByPriority(Model.PriorityOrder.HighMediumLow);
             radioButtonLowToHigh.CheckedChanged += (s, ev) => SortTicketsByPriority(Model.PriorityOrder.LowMediumHigh);
             ShowTickets();
+            HideServiceDeskControls();
         }
+
+        private void HideServiceDeskControls()
+        {
+            if (employee.Role == EmployeeRole.Regular)
+            {
+                List<Control> serviceDeskControls = new List<Control>() {
+                    buttonTransferTicket, buttonDelete, buttonUpdate, refreshButton, buttonResolve, buttonCloseWithoutResolve, labelSubject, textBoxSubject, labelPriority, textBoxPriority, dateTimePicker
+                };
+
+                foreach (var item in serviceDeskControls)
+                {
+                    item.Hide();
+                }
+
+                userManagementToolStripMenuItem.Visible = false;
+            }
+        }
+
         private void GetTickets(List<TicketModel> tickets)
         {
             foreach (TicketModel ticket in tickets)
@@ -258,14 +277,6 @@ namespace DemoApp
                 TransferTicketView transferTicketView = new TransferTicketView(selectedTicket);
                 transferTicketView.Show();
             }
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            Dashboard serviceDeskDashboard = new Dashboard(employee);
-            serviceDeskDashboard.Show();
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
